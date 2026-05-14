@@ -28,7 +28,7 @@ const STEPS_WINDOWS: Step[] = [
     title: "Install the dev toolchain",
     body:
       "Inside Ubuntu, install Node LTS, Yarn, Foundry, and the GitHub CLI in one go.",
-    code: `curl -fsSL ${RAW_BASE}/wsl-bootstrap.sh | bash`,
+    code: `bash -c "$(curl -fsSL ${RAW_BASE}/wsl-bootstrap.sh)"`,
     note: "Close and reopen Ubuntu after this finishes so PATH picks up the new tools.",
   },
   {
@@ -115,20 +115,20 @@ export const ONE_LINERS: Record<
       "Step 1, in Administrator PowerShell. Installs WSL2 + Ubuntu, then prompts to reboot.",
     secondary: {
       lang: "bash",
-      code: `curl -fsSL ${RAW_BASE}/wsl-bootstrap.sh | bash`,
+      code: `bash -c "$(curl -fsSL ${RAW_BASE}/wsl-bootstrap.sh)"`,
       caption:
         "Step 2, inside Ubuntu after reboot. Installs the toolchain, asks for your git identity, and scaffolds the dapp.",
     },
   },
   mac: {
     lang: "bash",
-    code: `curl -fsSL ${RAW_BASE}/mac-bootstrap.sh | bash`,
+    code: `bash -c "$(curl -fsSL ${RAW_BASE}/mac-bootstrap.sh)"`,
     caption:
       "Run in Terminal. Installs Foundry + Node LTS, asks for your git identity, and scaffolds the dapp.",
   },
   linux: {
     lang: "bash",
-    code: `curl -fsSL ${RAW_BASE}/wsl-bootstrap.sh | bash`,
+    code: `bash -c "$(curl -fsSL ${RAW_BASE}/wsl-bootstrap.sh)"`,
     caption:
       "Run in your terminal. Installs the toolchain, asks for your git identity, and scaffolds the dapp.",
   },
