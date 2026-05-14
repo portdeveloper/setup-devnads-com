@@ -1,26 +1,82 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Terminal Direction tokens — match devnads-blitz-com.
+     Page = --bg. Cards = --panel + 1px --line. Nested = --panel-hi. */
+  --bg: #0a0a0c;
+  --panel: #111114;
+  --panel-hi: #16161b;
+  --line: #23232a;
+  --line-hi: #2e2e36;
+  --text: #e7e7ea;
+  --dim: #8a8a93;
+  --very-dim: #56565d;
+  --brand: #836ef9;
+  --brand-hi: #a594ff;
+  --brand-pressed: #6e54ff;
+  --on-brand: #ffffff;
+  --ok: #7df9b0;
+  --warn: #ffb547;
+  --destructive: #ef4444;
+
+  /* Code Block — hardcoded by design (one documented exception). */
+  --code-bg: #0d0d14;
+  --code-bg-header: #131318;
+  --code-border: #1e1e2a;
+  --code-text: #c4c4d4;
+  --code-meta: #5c5c7a;
+
+  /* Squarish brutalist corners */
+  --radius: 0rem;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-background: var(--bg);
+  --color-foreground: var(--text);
+  --color-border: var(--line);
+  --color-ring: var(--brand);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --radius: var(--radius);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+html button:not(:disabled),
+html [role="button"]:not([aria-disabled="true"]),
+html label[for],
+html summary,
+html a[href] {
+  cursor: pointer;
+}
+
+html button:disabled,
+html [role="button"][aria-disabled="true"] {
+  cursor: not-allowed;
+}
+
+@layer utilities {
+  .tech-panel {
+    background-color: var(--panel);
+    border: 1px solid var(--line);
+  }
+
+  .mono-caps {
+    font-family: var(--font-geist-mono), monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+  }
+
+  /* The signature blitz frame: centered column with vertical hairlines
+     down the left and right edges, sliding behind the full-bleed header
+     and footer. */
+  .frame {
+    max-width: 960px;
+    margin-inline: auto;
+    border-inline: 1px solid var(--line);
+  }
 }
