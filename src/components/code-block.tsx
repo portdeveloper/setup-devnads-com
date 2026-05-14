@@ -26,7 +26,7 @@ export function CodeBlock({ language = "bash", children, className }: CodeBlockP
   return (
     <div
       className={cn(
-        "border",
+        "border min-w-0",
         className,
       )}
       style={{

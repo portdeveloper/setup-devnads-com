@@ -194,7 +194,7 @@ export function SetupFlow() {
               >
                 {step.num} / {String(steps.length).padStart(2, "0")}
               </div>
-              <div className="space-y-3">
+              <div className="space-y-3 min-w-0">
                 <h3
                   className="text-lg md:text-xl"
                   style={{ color: "var(--text)" }}
