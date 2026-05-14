@@ -18,10 +18,7 @@ export const en: Dictionary = {
   hero: {
     eyebrow: "Developer setup",
     title: "Get your machine ready for Monad.",
-    bodyBefore: "Scaffold-ETH 2 (Foundry) workshops, pre-wired for ",
-    bodyHighlight: "Monad Testnet",
-    bodyAfter:
-      ". Pick your OS and run the one-liner. Under 10 minutes on a decent connection.",
+    body: "Pick your OS and run the one-liner. Under 10 minutes on a decent connection.",
   },
   manualCta: {
     eyebrow: "Prefer step-by-step",
@@ -149,20 +146,26 @@ export const en: Dictionary = {
         num: "01",
         title: "Install WSL2 + Ubuntu",
         body:
-          "Open PowerShell as Administrator and run the bootstrap. It enables WSL2, installs Ubuntu, and prompts you to reboot.",
+          "Open PowerShell as Administrator and run the bootstrap. It installs Windows Subsystem for Linux (with Ubuntu) and prompts you to reboot.",
         code: `irm ${RAW_BASE}/windows-bootstrap.ps1 | iex`,
         lang: "powershell",
         note:
           "After reboot, open Ubuntu from Start. Create a Linux username + password. These are separate from your Windows login.",
+        screenshots: [
+          {
+            src: "/screenshots/win-01-powershell-admin.svg",
+            alt: "PowerShell running as Administrator with the bootstrap one-liner",
+          },
+        ],
       },
       {
         num: "02",
         title: "Install the dev toolchain",
         body:
-          "Inside Ubuntu, install Node LTS, Yarn, Foundry, and the GitHub CLI in one go.",
+          "In VSCode, run \"WSL: Connect to WSL\" from the Command Palette (Ctrl+Shift+P). In the new window, drag up from the bottom edge to open a terminal, then install Node LTS, Yarn, Foundry, and the GitHub CLI in one go.",
         code: `bash -c "$(curl -fsSL ${RAW_BASE}/wsl-bootstrap.sh)"`,
         note:
-          "Close and reopen Ubuntu after this finishes so PATH picks up the new tools.",
+          "Close and reopen the VSCode terminal after this finishes so PATH picks up the new tools.",
       },
       {
         num: "03",

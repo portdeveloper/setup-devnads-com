@@ -18,6 +18,7 @@ export type StepCopy = {
   code?: string;
   lang?: string;
   note?: string;
+  screenshots?: { src: string; alt: string }[];
 };
 
 export type TroubleItem = { title: string; body: string };
@@ -28,9 +29,7 @@ export type Dictionary = {
   hero: {
     eyebrow: string;
     title: string;
-    bodyBefore: string;
-    bodyHighlight: string;
-    bodyAfter: string;
+    body: string;
   };
   // `template` uses {os} placeholder, replaced at render time.
   manualCta: { eyebrow: string; template: string };

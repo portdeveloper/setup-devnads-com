@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-label="PowerShell running as Administrator with the bootstrap one-liner">
+  <!-- backdrop matching the page bg -->
+  <rect width="1280" height="720" fill="#0a0a0c"/>
+
+  <!-- PowerShell window shadow -->
+  <rect x="120" y="80" width="1040" height="580" fill="#000" opacity="0.35"/>
+
+  <!-- PowerShell window -->
+  <rect x="100" y="60" width="1040" height="580" fill="#012456"/>
+
+  <!-- title bar -->
+  <rect x="100" y="60" width="1040" height="36" fill="#1f1f1f"/>
+  <!-- title bar icon (PowerShell blue square w/ chevron) -->
+  <rect x="112" y="70" width="16" height="16" fill="#012456" stroke="#5fbcff" stroke-width="1"/>
+  <text x="116" y="83" fill="#ffffff" font-family="ui-monospace, monospace" font-size="12" font-weight="600">&gt;_</text>
+  <text x="140" y="84" fill="#ffffff" font-family="ui-sans-serif, system-ui, sans-serif" font-size="13">Administrator: Windows PowerShell</text>
+
+  <!-- window controls -->
+  <text x="1075" y="84" fill="#cccccc" font-family="ui-sans-serif, system-ui, sans-serif" font-size="14">_</text>
+  <text x="1098" y="83" fill="#cccccc" font-family="ui-sans-serif, system-ui, sans-serif" font-size="14">▢</text>
+  <rect x="1118" y="66" width="22" height="24" fill="#e81123"/>
+  <text x="1124" y="84" fill="#ffffff" font-family="ui-sans-serif, system-ui, sans-serif" font-size="14">✕</text>
+
+  <!-- console content -->
+  <g font-family="Consolas, ui-monospace, monospace" font-size="15" fill="#ffffff">
+    <text x="130" y="140">Windows PowerShell</text>
+    <text x="130" y="166">Copyright (C) Microsoft Corporation. All rights reserved.</text>
+    <text x="130" y="192" fill="#7df9b0">Install the latest PowerShell for new features and improvements! https://aka.ms/PSWindows</text>
+    <text x="130" y="248" fill="#ffff00">PS C:\WINDOWS\system32&gt;</text>
+    <text x="383" y="248" fill="#ffffff">irm https://raw.githubusercontent.com/portdeveloper/se2-workshop-windows-setup/main/windows-bootstrap.ps1 | iex</text>
+
+    <!-- caret -->
+    <rect x="1147" y="234" width="9" height="18" fill="#ffffff"/>
+
+    <text x="130" y="302" fill="#5cdaff">==&gt; Scaffold-ETH 2 Workshop: Windows bootstrap</text>
+    <text x="130" y="346" fill="#ffb547">WARNING: hardware virtualization appears disabled in BIOS.</text>
+    <text x="130" y="370">WSL2 needs Intel VT-x or AMD-V. Enable it in BIOS/UEFI if installation fails.</text>
+    <text x="130" y="416" fill="#7df9b0">Installing WSL2 + Ubuntu (this can take several minutes)...</text>
+    <text x="130" y="442">Installing: Virtual Machine Platform</text>
+    <text x="130" y="466">Virtual Machine Platform has been installed.</text>
+    <text x="130" y="490">Installing: Windows Subsystem for Linux</text>
+    <text x="130" y="514">Windows Subsystem for Linux has been installed.</text>
+    <text x="130" y="538">Downloading: Ubuntu</text>
+  </g>
+</svg>

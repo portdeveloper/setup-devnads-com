@@ -14,6 +14,14 @@ import type { Dictionary } from "@/i18n/types";
 
 const PAGE_URL = "https://setup.devnads.com";
 
+const STEP_NUM_COLORS = [
+  "var(--brand)",
+  "var(--info)",
+  "var(--ok)",
+  "var(--warn)",
+  "var(--destructive)",
+];
+
 export function HomeFlow({
   dict,
   locale: _locale,
@@ -29,9 +37,13 @@ export function HomeFlow({
 
   const aiPrompt = `Walk me through this Monad workshop setup page and help me when I get stuck: ${PAGE_URL}`;
   const encoded = encodeURIComponent(aiPrompt);
-  const chatgptUrl = `https://chatgpt.com/?q=${encoded}`;
+  // URLs match the working patterns in
+  // github.com/portdeveloper/docusaurus-plugin-copy-page-button.
+  // ChatGPT uses the legacy chat.openai.com host; Gemini wants
+  // /guided-learning with ?query= (not /app?q=).
+  const chatgptUrl = `https://chat.openai.com/?q=${encoded}`;
   const claudeUrl = `https://claude.ai/new?q=${encoded}`;
-  const geminiUrl = `https://gemini.google.com/app?q=${encoded}`;
+  const geminiUrl = `https://gemini.google.com/guided-learning?query=${encoded}`;
 
   return (
     <div className="frame">
@@ -52,9 +64,7 @@ export function HomeFlow({
               className="mt-5 max-w-[640px] text-base md:text-lg"
               style={{ color: "var(--dim)" }}
             >
-              {dict.hero.bodyBefore}
-              <span style={{ color: "var(--text)" }}>{dict.hero.bodyHighlight}</span>
-              {dict.hero.bodyAfter}
+              {dict.hero.body}
             </p>
             <div className="mt-10">
               <OsTabs value={os} onChange={setOs} labels={dict.os} />
@@ -85,13 +95,13 @@ export function HomeFlow({
       </SectionFrame>
 
       {/* STEPS — the main path, one SectionFrame per step */}
-      {steps.map((step) => (
+      {steps.map((step, i) => (
         <SectionFrame key={step.num} className="px-6 py-12 md:py-14">
           <div className="grid gap-6 md:grid-cols-[140px_1fr] md:gap-10">
             <div>
               <div
                 className="mono-caps leading-none text-5xl md:text-6xl"
-                style={{ color: "var(--brand)" }}
+                style={{ color: STEP_NUM_COLORS[i] ?? "var(--brand)" }}
               >
                 {step.num}
               </div>
@@ -114,6 +124,21 @@ export function HomeFlow({
                   {step.body}
                 </p>
               )}
+              {step.screenshots?.length ? (
+                <div className="flex flex-col gap-3">
+                  {step.screenshots.map((sc, j) => (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      key={j}
+                      src={sc.src}
+                      alt={sc.alt}
+                      loading="lazy"
+                      className="w-full h-auto border"
+                      style={{ borderColor: "var(--line)" }}
+                    />
+                  ))}
+                </div>
+              ) : null}
               {step.code && (
                 <CodeBlock language={step.lang} {...cb}>
                   {step.code}
@@ -182,9 +207,9 @@ export function HomeFlow({
           {renderInline(dict.stillStuck.body)}
         </p>
         <div className="flex flex-wrap gap-3">
-          <AskAiButton brand="ChatGPT" href={chatgptUrl} />
-          <AskAiButton brand="Claude" href={claudeUrl} />
-          <AskAiButton brand="Gemini" href={geminiUrl} />
+          <AskAiButton brand="ChatGPT" href={chatgptUrl} prompt={aiPrompt} />
+          <AskAiButton brand="Claude" href={claudeUrl} prompt={aiPrompt} />
+          <AskAiButton brand="Gemini" href={geminiUrl} prompt={aiPrompt} />
           <CopyPageUrlButton
             copyLabel={dict.stillStuck.copyButton}
             copiedLabel={dict.stillStuck.copiedButton}
@@ -241,16 +266,32 @@ function CopyPageUrlButton({
   );
 }
 
-function AskAiButton({ brand, href }: { brand: string; href: string }) {
+function AskAiButton({
+  brand,
+  href,
+  prompt,
+}: {
+  brand: string;
+  href: string;
+  prompt: string;
+}) {
+  const [copied, setCopied] = useState(false);
+  const onClick = () => {
+    // Fire-and-forget clipboard write so the window.open below stays
+    // inside the user-gesture (some browsers block popups otherwise).
+    navigator.clipboard.writeText(prompt).catch(() => {});
+    window.open(href, "_blank", "noopener,noreferrer");
+    setCopied(true);
+    setTimeout(() => setCopied(false), 1800);
+  };
   return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noreferrer"
+    <button
+      type="button"
+      onClick={onClick}
       className="mono-caps inline-flex items-center gap-1.5 text-[11px] px-4 py-2 border transition-colors hover:bg-[var(--panel)]"
       style={{ borderColor: "var(--line)", color: "var(--text)" }}
     >
-      {brand} <ExternalLink className="h-3 w-3" />
-    </a>
+      {brand} {copied ? <Check className="h-3 w-3" /> : <ExternalLink className="h-3 w-3" />}
+    </button>
   );
 }

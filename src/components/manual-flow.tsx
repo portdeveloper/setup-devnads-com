@@ -10,6 +10,14 @@ import { SectionFrame } from "@/components/section-frame";
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/types";
 
+const STEP_NUM_COLORS = [
+  "var(--brand)",
+  "var(--info)",
+  "var(--ok)",
+  "var(--warn)",
+  "var(--destructive)",
+];
+
 function isOs(v: string | null): v is Os {
   return v === "windows" || v === "mac" || v === "linux";
 }
@@ -55,13 +63,13 @@ function ManualFlowInner({
         </div>
       </SectionFrame>
 
-      {steps.map((step) => (
+      {steps.map((step, i) => (
         <SectionFrame key={step.num} className="px-6 py-12 md:py-14">
           <div className="grid gap-6 md:grid-cols-[140px_1fr] md:gap-10">
             <div>
               <div
                 className="mono-caps leading-none text-5xl md:text-6xl"
-                style={{ color: "var(--brand)" }}
+                style={{ color: STEP_NUM_COLORS[i] ?? "var(--brand)" }}
               >
                 {step.num}
               </div>
@@ -84,6 +92,21 @@ function ManualFlowInner({
                   {step.body}
                 </p>
               )}
+              {step.screenshots?.length ? (
+                <div className="flex flex-col gap-3">
+                  {step.screenshots.map((sc, j) => (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      key={j}
+                      src={sc.src}
+                      alt={sc.alt}
+                      loading="lazy"
+                      className="w-full h-auto border"
+                      style={{ borderColor: "var(--line)" }}
+                    />
+                  ))}
+                </div>
+              ) : null}
               {step.code && (
                 <CodeBlock language={step.lang} {...cb}>
                   {step.code}

@@ -18,11 +18,7 @@ export const tr: Dictionary = {
   hero: {
     eyebrow: "Geliştirici kurulumu",
     title: "Makineni Monad için hazırla.",
-    bodyBefore:
-      "Scaffold-ETH 2 (Foundry) atölyeleri için, önceden ",
-    bodyHighlight: "Monad Testnet",
-    bodyAfter:
-      "'e bağlı. İşletim sistemini seç ve tek satırı çalıştır. Düzgün bir bağlantıda 10 dakikadan kısa sürer.",
+    body: "İşletim sistemini seç ve tek satırı çalıştır. Düzgün bir bağlantıda 10 dakikadan kısa sürer.",
   },
   manualCta: {
     eyebrow: "Adım adım gitmek istersen",
@@ -149,7 +145,13 @@ export const tr: Dictionary = {
         num: "01",
         title: "WSL2 + Ubuntu kur",
         body:
-          "PowerShell'i Yönetici olarak aç ve bootstrap'i çalıştır. WSL2'yi etkinleştirir, Ubuntu'yu kurar ve yeniden başlatma ister.",
+          "PowerShell'i Yönetici olarak aç ve bootstrap'i çalıştır. Windows Subsystem for Linux'u (Ubuntu ile birlikte) kurar ve yeniden başlatma ister.",
+        screenshots: [
+          {
+            src: "/screenshots/win-01-powershell-admin.svg",
+            alt: "Yönetici olarak çalışan PowerShell, bootstrap tek satırlığı",
+          },
+        ],
         code: `irm ${RAW_BASE}/windows-bootstrap.ps1 | iex`,
         lang: "powershell",
         note:
@@ -159,10 +161,10 @@ export const tr: Dictionary = {
         num: "02",
         title: "Geliştirme toolchain'ini kur",
         body:
-          "Ubuntu içinde Node LTS, Yarn, Foundry ve GitHub CLI'yi tek seferde kur.",
+          "VSCode'da Komut Paleti'nden (Ctrl+Shift+P) \"WSL: Connect to WSL\" çalıştır. Açılan pencerede alt kenardan yukarı sürükleyerek terminal aç, sonra Node LTS, Yarn, Foundry ve GitHub CLI'yi tek seferde kur.",
         code: `bash -c "$(curl -fsSL ${RAW_BASE}/wsl-bootstrap.sh)"`,
         note:
-          "Bittikten sonra Ubuntu'yu kapatıp tekrar aç, böylece PATH yeni araçları görür.",
+          "Bittikten sonra VSCode terminalini kapatıp yeniden aç, böylece PATH yeni araçları görür.",
       },
       {
         num: "03",

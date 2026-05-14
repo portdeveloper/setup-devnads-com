@@ -18,6 +18,7 @@
   --ok: #7df9b0;
   --warn: #ffb547;
   --destructive: #ef4444;
+  --info: #5cdaff;
 
   /* Code Block. Hardcoded by design (one documented exception). */
   --code-bg: #0d0d14;
