@@ -37,7 +37,7 @@ export function renderInline(text: string): ReactNode[] {
       const end = text.indexOf("`", i + 1);
       if (end !== -1) {
         out.push(
-          <code key={key++} style={{ color: "var(--text)" }}>
+          <code key={key++} style={{ color: "var(--brand-hi)" }}>
             {text.slice(i + 1, end)}
           </code>,
         );

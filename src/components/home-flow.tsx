@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
-import { ArrowRight, Check, Copy } from "lucide-react";
+import QRCode from "react-qr-code";
+import { Check, Copy } from "lucide-react";
 import { CodeBlock } from "@/components/code-block";
 import { OsTabs, type Os } from "@/components/os-tabs";
 import { Accordion, AccordionItem } from "@/components/accordion";
@@ -12,99 +12,119 @@ import { renderInline } from "@/i18n/render-inline";
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/types";
 
+const PAGE_URL = "https://setup.devnads.com";
+
 export function HomeFlow({
   dict,
-  locale,
+  locale: _locale,
 }: {
   dict: Dictionary;
   locale: Locale;
 }) {
   const [os, setOs] = useState<Os>("windows");
-  const oneLiner = dict.oneLiners[os];
+  const steps = dict.steps[os];
+  const totalSteps = String(steps.length).padStart(2, "0");
 
   const cb = { copyLabel: dict.codeBlock.copy, copiedLabel: dict.codeBlock.copied };
 
   return (
     <div className="frame">
       {/* HERO */}
-      <SectionFrame className="px-6 pt-16 pb-14 md:pt-24 md:pb-20">
-        <p className="mono-caps mb-6 text-[11px]" style={{ color: "var(--very-dim)" }}>
-          {dict.hero.eyebrow}
-        </p>
-        <h1
-          className="text-4xl md:text-5xl leading-[1.05] tracking-tight font-medium"
-          style={{ color: "var(--text)" }}
-        >
-          {dict.hero.title}
-        </h1>
-        <p className="mt-5 max-w-[640px] text-base md:text-lg" style={{ color: "var(--dim)" }}>
-          {dict.hero.bodyBefore}
-          <span style={{ color: "var(--text)" }}>{dict.hero.bodyHighlight}</span>
-          {dict.hero.bodyAfter}
-        </p>
-
-        <div className="mt-10 flex flex-col gap-4 min-w-0">
-          <OsTabs value={os} onChange={setOs} labels={dict.os} />
-          <CodeBlock language={oneLiner.lang} {...cb}>{oneLiner.code}</CodeBlock>
-          <p className="mono-caps text-[10px]" style={{ color: "var(--very-dim)" }}>
-            {oneLiner.caption}
-          </p>
-          {oneLiner.secondary && (
-            <>
-              <div className="h-2" />
-              <CodeBlock language={oneLiner.secondary.lang} {...cb}>
-                {oneLiner.secondary.code}
-              </CodeBlock>
-              <p className="mono-caps text-[10px]" style={{ color: "var(--very-dim)" }}>
-                {oneLiner.secondary.caption}
-              </p>
-            </>
-          )}
+      <SectionFrame className="px-6 pt-16 pb-12 md:pt-24 md:pb-16">
+        <div className="grid gap-10 md:grid-cols-[1fr_auto] md:items-start md:gap-12">
+          <div className="min-w-0">
+            <p className="mono-caps mb-6 text-[11px]" style={{ color: "var(--very-dim)" }}>
+              {dict.hero.eyebrow}
+            </p>
+            <h1
+              className="text-4xl md:text-5xl leading-[1.05] tracking-tight font-medium"
+              style={{ color: "var(--text)" }}
+            >
+              {dict.hero.title}
+            </h1>
+            <p
+              className="mt-5 max-w-[640px] text-base md:text-lg"
+              style={{ color: "var(--dim)" }}
+            >
+              {dict.hero.bodyBefore}
+              <span style={{ color: "var(--text)" }}>{dict.hero.bodyHighlight}</span>
+              {dict.hero.bodyAfter}
+            </p>
+            <div className="mt-10">
+              <OsTabs value={os} onChange={setOs} labels={dict.os} />
+            </div>
+          </div>
+          <div className="flex flex-col items-start gap-3 md:items-center">
+            <div
+              className="p-3"
+              style={{ background: "var(--text)" }}
+              aria-label={PAGE_URL}
+            >
+              <QRCode
+                value={PAGE_URL}
+                size={208}
+                bgColor="#e7e7ea"
+                fgColor="#0a0a0c"
+                level="M"
+              />
+            </div>
+            <p
+              className="mono-caps text-[10px]"
+              style={{ color: "var(--very-dim)" }}
+            >
+              setup.devnads.com
+            </p>
+          </div>
         </div>
       </SectionFrame>
 
-      {/* MANUAL CTA */}
-      <SectionFrame className="px-6 py-10">
-        <Link
-          href={`/${locale}/manual?os=${os}`}
-          className="group flex items-center justify-between gap-4 -mx-6 px-6 py-4 transition-colors hover:bg-[var(--panel)]"
-        >
-          <div className="min-w-0">
-            <p className="mono-caps text-[10px] mb-1.5" style={{ color: "var(--very-dim)" }}>
-              {dict.manualCta.eyebrow}
-            </p>
-            <p className="text-base md:text-lg" style={{ color: "var(--text)" }}>
-              {dict.manualCta.template.replace("{os}", dict.os[os])}
-            </p>
+      {/* STEPS — the main path, one SectionFrame per step */}
+      {steps.map((step) => (
+        <SectionFrame key={step.num} className="px-6 py-12 md:py-14">
+          <div className="grid gap-6 md:grid-cols-[140px_1fr] md:gap-10">
+            <div>
+              <div
+                className="mono-caps leading-none text-5xl md:text-6xl"
+                style={{ color: "var(--brand)" }}
+              >
+                {step.num}
+              </div>
+              <p className="mono-caps mt-3 text-[10px]" style={{ color: "var(--very-dim)" }}>
+                of {totalSteps}
+              </p>
+            </div>
+            <div className="space-y-5 min-w-0">
+              <h3
+                className="text-2xl md:text-3xl tracking-tight font-medium"
+                style={{ color: "var(--text)" }}
+              >
+                {step.title}
+              </h3>
+              {step.body && (
+                <p
+                  className="text-base md:text-lg leading-relaxed max-w-[640px]"
+                  style={{ color: "var(--text)" }}
+                >
+                  {step.body}
+                </p>
+              )}
+              {step.code && (
+                <CodeBlock language={step.lang} {...cb}>
+                  {step.code}
+                </CodeBlock>
+              )}
+              {step.note && (
+                <p
+                  className="text-sm leading-relaxed border-l-2 pl-3"
+                  style={{ color: "var(--dim)", borderColor: "var(--warn)" }}
+                >
+                  {step.note}
+                </p>
+              )}
+            </div>
           </div>
-          <ArrowRight
-            className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-0.5"
-            style={{ color: "var(--dim)" }}
-          />
-        </Link>
-      </SectionFrame>
-
-      {/* AFTER INSTALL */}
-      <SectionFrame className="px-6 py-14">
-        <p className="mono-caps mb-3 text-[11px]" style={{ color: "var(--very-dim)" }}>
-          {dict.afterInstall.eyebrow}
-        </p>
-        <h2 className="text-2xl md:text-3xl tracking-tight mb-5" style={{ color: "var(--text)" }}>
-          {dict.afterInstall.title}
-        </h2>
-        <p className="text-sm leading-relaxed mb-6 max-w-[640px]" style={{ color: "var(--dim)" }}>
-          {dict.afterInstall.body}
-        </p>
-        <CodeBlock language="bash" {...cb}>
-          {`cd ~/my-monad-dapp
-yarn chain      # terminal 1 (local Anvil)
-yarn deploy     # terminal 2
-yarn start      # terminal 3 (http://localhost:3000)`}
-        </CodeBlock>
-        <p className="mono-caps text-[10px] mt-3" style={{ color: "var(--very-dim)" }}>
-          {dict.afterInstall.note}
-        </p>
-      </SectionFrame>
+        </SectionFrame>
+      ))}
 
       {/* FAUCET */}
       <SectionFrame className="px-6 py-14">

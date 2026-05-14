@@ -55,40 +55,52 @@ function ManualFlowInner({
         </div>
       </SectionFrame>
 
-      <SectionFrame className="px-6 py-14">
-        <ol className="flex flex-col gap-10">
-          {steps.map((step) => (
-            <li key={step.num} className="grid gap-4 md:grid-cols-[80px_1fr]">
-              <div className="mono-caps text-[11px] pt-1" style={{ color: "var(--brand)" }}>
-                {step.num} / {String(steps.length).padStart(2, "0")}
+      {steps.map((step) => (
+        <SectionFrame key={step.num} className="px-6 py-12 md:py-14">
+          <div className="grid gap-6 md:grid-cols-[140px_1fr] md:gap-10">
+            <div>
+              <div
+                className="mono-caps leading-none text-5xl md:text-6xl"
+                style={{ color: "var(--brand)" }}
+              >
+                {step.num}
               </div>
-              <div className="space-y-3 min-w-0">
-                <h3 className="text-lg md:text-xl" style={{ color: "var(--text)" }}>
-                  {step.title}
-                </h3>
-                {step.body && (
-                  <p className="text-sm leading-relaxed" style={{ color: "var(--dim)" }}>
-                    {step.body}
-                  </p>
-                )}
-                {step.code && (
-                  <CodeBlock language={step.lang} {...cb}>
-                    {step.code}
-                  </CodeBlock>
-                )}
-                {step.note && (
-                  <p
-                    className="text-xs leading-relaxed border-l-2 pl-3"
-                    style={{ color: "var(--dim)", borderColor: "var(--line-hi)" }}
-                  >
-                    {step.note}
-                  </p>
-                )}
-              </div>
-            </li>
-          ))}
-        </ol>
-      </SectionFrame>
+              <p className="mono-caps mt-3 text-[10px]" style={{ color: "var(--very-dim)" }}>
+                of {String(steps.length).padStart(2, "0")}
+              </p>
+            </div>
+            <div className="space-y-5 min-w-0">
+              <h3
+                className="text-2xl md:text-3xl tracking-tight font-medium"
+                style={{ color: "var(--text)" }}
+              >
+                {step.title}
+              </h3>
+              {step.body && (
+                <p
+                  className="text-base md:text-lg leading-relaxed max-w-[640px]"
+                  style={{ color: "var(--text)" }}
+                >
+                  {step.body}
+                </p>
+              )}
+              {step.code && (
+                <CodeBlock language={step.lang} {...cb}>
+                  {step.code}
+                </CodeBlock>
+              )}
+              {step.note && (
+                <p
+                  className="text-sm leading-relaxed border-l-2 pl-3"
+                  style={{ color: "var(--dim)", borderColor: "var(--warn)" }}
+                >
+                  {step.note}
+                </p>
+              )}
+            </div>
+          </div>
+        </SectionFrame>
+      ))}
 
       <SectionFrame className="px-6 py-12">
         <p className="text-sm leading-relaxed max-w-[640px]" style={{ color: "var(--dim)" }}>
