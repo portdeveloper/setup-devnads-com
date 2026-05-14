@@ -3,7 +3,7 @@
 import { useState, type FormEvent } from "react";
 import { Check, AlertCircle, Loader2, Droplet } from "lucide-react";
 
-const FAUCET_ENDPOINT = "https://faucet.devnads.com/v1/faucet";
+const FAUCET_ENDPOINT = "https://agents.devnads.com/v1/faucet";
 const MONAD_TESTNET_CHAIN_ID = 10143;
 const EXPLORER_TX = "https://testnet.monadexplorer.com/tx";
 
