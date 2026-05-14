@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import QRCode from "react-qr-code";
-import { Check, Copy } from "lucide-react";
+import { Check, Copy, ExternalLink } from "lucide-react";
 import { CodeBlock } from "@/components/code-block";
 import { OsTabs, type Os } from "@/components/os-tabs";
 import { Accordion, AccordionItem } from "@/components/accordion";
@@ -26,6 +26,12 @@ export function HomeFlow({
   const totalSteps = String(steps.length).padStart(2, "0");
 
   const cb = { copyLabel: dict.codeBlock.copy, copiedLabel: dict.codeBlock.copied };
+
+  const aiPrompt = `Walk me through this Monad workshop setup page and help me when I get stuck: ${PAGE_URL}`;
+  const encoded = encodeURIComponent(aiPrompt);
+  const chatgptUrl = `https://chatgpt.com/?q=${encoded}`;
+  const claudeUrl = `https://claude.ai/new?q=${encoded}`;
+  const geminiUrl = `https://gemini.google.com/app?q=${encoded}`;
 
   return (
     <div className="frame">
@@ -176,6 +182,9 @@ export function HomeFlow({
           {renderInline(dict.stillStuck.body)}
         </p>
         <div className="flex flex-wrap gap-3">
+          <AskAiButton brand="ChatGPT" href={chatgptUrl} />
+          <AskAiButton brand="Claude" href={claudeUrl} />
+          <AskAiButton brand="Gemini" href={geminiUrl} />
           <CopyPageUrlButton
             copyLabel={dict.stillStuck.copyButton}
             copiedLabel={dict.stillStuck.copiedButton}
@@ -229,5 +238,19 @@ function CopyPageUrlButton({
         </>
       )}
     </button>
+  );
+}
+
+function AskAiButton({ brand, href }: { brand: string; href: string }) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noreferrer"
+      className="mono-caps inline-flex items-center gap-1.5 text-[11px] px-4 py-2 border transition-colors hover:bg-[var(--panel)]"
+      style={{ borderColor: "var(--line)", color: "var(--text)" }}
+    >
+      {brand} <ExternalLink className="h-3 w-3" />
+    </a>
   );
 }
