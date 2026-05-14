@@ -7,6 +7,7 @@ import { CodeBlock } from "@/components/code-block";
 import { OsTabs, type Os } from "@/components/os-tabs";
 import { Accordion, AccordionItem } from "@/components/accordion";
 import { SectionFrame } from "@/components/section-frame";
+import { FaucetCard } from "@/components/faucet-card";
 import { ONE_LINERS } from "@/lib/setup-data";
 
 export function HomeFlow() {
@@ -122,6 +123,30 @@ yarn start      # terminal 3 (http://localhost:3000)`}
         >
           To deploy to Monad Testnet later: gh auth login, yarn deploy --network monadTestnet.
         </p>
+      </SectionFrame>
+
+      {/* FAUCET */}
+      <SectionFrame className="px-6 py-14">
+        <p
+          className="mono-caps mb-3 text-[11px]"
+          style={{ color: "var(--very-dim)" }}
+        >
+          Monad Testnet faucet
+        </p>
+        <h2
+          className="text-2xl md:text-3xl tracking-tight mb-5"
+          style={{ color: "var(--text)" }}
+        >
+          Grab some MON to deploy with.
+        </h2>
+        <p
+          className="text-sm leading-relaxed mb-6 max-w-[640px]"
+          style={{ color: "var(--dim)" }}
+        >
+          Drop in your wallet address and we&apos;ll send testnet MON straight
+          to it. Rate-limited per address and per IP.
+        </p>
+        <FaucetCard />
       </SectionFrame>
 
       {/* TROUBLESHOOTING */}
