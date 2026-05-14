@@ -59,8 +59,9 @@ const STEPS_UNIX: Step[] = [
     num: "01",
     title: "Install Foundry",
     body: "Same installer works on macOS and Linux.",
-    code: "curl -L https://foundry.paradigm.xyz | bash\nfoundryup",
-    note: "Open a new shell after foundryup so forge / cast / anvil are on PATH.",
+    code:
+      'curl -L https://foundry.paradigm.xyz | bash\nexport PATH="$HOME/.foundry/bin:$PATH"\nfoundryup',
+    note: "The export keeps Foundry on PATH for the current shell. Next shells pick it up from your rc files automatically.",
   },
   {
     num: "02",
@@ -100,22 +101,36 @@ export const STEPS: Record<Os, Step[]> = {
 
 export const ONE_LINERS: Record<
   Os,
-  { lang: string; code: string; caption: string }
+  {
+    lang: string;
+    code: string;
+    caption: string;
+    secondary?: { lang: string; code: string; caption: string };
+  }
 > = {
   windows: {
     lang: "powershell",
     code: `irm ${RAW_BASE}/windows-bootstrap.ps1 | iex`,
-    caption: "Run in an Administrator PowerShell.",
+    caption:
+      "Step 1, in Administrator PowerShell. Installs WSL2 + Ubuntu, then prompts to reboot.",
+    secondary: {
+      lang: "bash",
+      code: `curl -fsSL ${RAW_BASE}/wsl-bootstrap.sh | bash`,
+      caption:
+        "Step 2, inside Ubuntu after reboot. Installs the toolchain, asks for your git identity, and scaffolds the dapp.",
+    },
   },
   mac: {
     lang: "bash",
-    code: `curl -L https://foundry.paradigm.xyz | bash && foundryup && npx create-eth@latest my-monad-dapp -e ${EXTENSION}`,
-    caption: "Run in Terminal. Assumes Node 20+ is already installed.",
+    code: `curl -fsSL ${RAW_BASE}/mac-bootstrap.sh | bash`,
+    caption:
+      "Run in Terminal. Installs Foundry + Node LTS, asks for your git identity, and scaffolds the dapp.",
   },
   linux: {
     lang: "bash",
-    code: `curl -fsSL ${RAW_BASE}/wsl-bootstrap.sh | bash && npx create-eth@latest my-monad-dapp -e ${EXTENSION}`,
-    caption: "Installs everything (Node + Foundry + gh) then scaffolds.",
+    code: `curl -fsSL ${RAW_BASE}/wsl-bootstrap.sh | bash`,
+    caption:
+      "Run in your terminal. Installs the toolchain, asks for your git identity, and scaffolds the dapp.",
   },
 };
 

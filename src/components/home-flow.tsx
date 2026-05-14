@@ -47,6 +47,20 @@ export function HomeFlow() {
           >
             {oneLiner.caption}
           </p>
+          {oneLiner.secondary && (
+            <>
+              <div className="h-2" />
+              <CodeBlock language={oneLiner.secondary.lang}>
+                {oneLiner.secondary.code}
+              </CodeBlock>
+              <p
+                className="mono-caps text-[10px]"
+                style={{ color: "var(--very-dim)" }}
+              >
+                {oneLiner.secondary.caption}
+              </p>
+            </>
+          )}
         </div>
       </SectionFrame>
 
@@ -72,6 +86,42 @@ export function HomeFlow() {
             style={{ color: "var(--dim)" }}
           />
         </Link>
+      </SectionFrame>
+
+      {/* AFTER INSTALL */}
+      <SectionFrame className="px-6 py-14">
+        <p
+          className="mono-caps mb-3 text-[11px]"
+          style={{ color: "var(--very-dim)" }}
+        >
+          After the install finishes
+        </p>
+        <h2
+          className="text-2xl md:text-3xl tracking-tight mb-5"
+          style={{ color: "var(--text)" }}
+        >
+          Run these to start developing.
+        </h2>
+        <p
+          className="text-sm leading-relaxed mb-6 max-w-[640px]"
+          style={{ color: "var(--dim)" }}
+        >
+          Open three terminals from inside your project directory. The first
+          spins up a local Anvil node, the second deploys your contracts to it,
+          the third serves the dapp.
+        </p>
+        <CodeBlock language="bash">
+          {`cd ~/my-monad-dapp
+yarn chain      # terminal 1 (local Anvil)
+yarn deploy     # terminal 2
+yarn start      # terminal 3 (http://localhost:3000)`}
+        </CodeBlock>
+        <p
+          className="mono-caps text-[10px] mt-3"
+          style={{ color: "var(--very-dim)" }}
+        >
+          To deploy to Monad Testnet later: gh auth login, yarn deploy --network monadTestnet.
+        </p>
       </SectionFrame>
 
       {/* TROUBLESHOOTING */}
