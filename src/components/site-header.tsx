@@ -1,4 +1,7 @@
 import Link from "next/link";
+import { LangSwitch } from "@/components/lang-switch";
+import type { Locale } from "@/i18n/config";
+import type { Dictionary } from "@/i18n/types";
 
 function GithubMark({ className }: { className?: string }) {
   return (
@@ -13,7 +16,13 @@ function GithubMark({ className }: { className?: string }) {
   );
 }
 
-export function SiteHeader() {
+export function SiteHeader({
+  dict,
+  locale,
+}: {
+  dict: Dictionary;
+  locale: Locale;
+}) {
   return (
     <header
       className="sticky top-0 z-50 w-full border-b"
@@ -21,27 +30,28 @@ export function SiteHeader() {
     >
       <div className="frame flex h-14 items-center justify-between px-6">
         <Link
-          href="/"
+          href={`/${locale}`}
           className="font-mono uppercase tracking-[0.18em] text-xs transition-colors hover:text-[var(--dim)]"
           style={{ color: "var(--text)" }}
         >
-          devnads / setup
+          {dict.header.wordmark}
         </Link>
-        <nav className="flex items-center gap-5">
+        <nav className="flex items-center gap-4 md:gap-5">
+          <LangSwitch current={locale} ariaLabel={dict.langSwitch.aria} />
           <Link
             href="https://github.com/portdeveloper/se2-workshop-windows-setup"
             target="_blank"
             rel="noreferrer"
-            className="font-mono uppercase tracking-[0.12em] text-[11px] transition-colors hover:text-[var(--text)]"
+            className="hidden md:inline font-mono uppercase tracking-[0.12em] text-[11px] transition-colors hover:text-[var(--text)]"
             style={{ color: "var(--dim)" }}
           >
-            Repo
+            {dict.header.repo}
           </Link>
           <Link
             href="https://github.com/portdeveloper/se2-monad-extension"
             target="_blank"
             rel="noreferrer"
-            aria-label="GitHub"
+            aria-label={dict.header.githubAria}
             className="transition-colors hover:text-[var(--text)]"
             style={{ color: "var(--dim)" }}
           >

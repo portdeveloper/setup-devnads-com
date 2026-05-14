@@ -8,9 +8,17 @@ type CodeBlockProps = {
   language?: string;
   children: string;
   className?: string;
+  copyLabel?: string;
+  copiedLabel?: string;
 };
 
-export function CodeBlock({ language = "bash", children, className }: CodeBlockProps) {
+export function CodeBlock({
+  language = "bash",
+  children,
+  className,
+  copyLabel = "Copy",
+  copiedLabel = "Copied",
+}: CodeBlockProps) {
   const [copied, setCopied] = useState(false);
 
   const onCopy = async () => {
@@ -56,11 +64,11 @@ export function CodeBlock({ language = "bash", children, className }: CodeBlockP
         >
           {copied ? (
             <>
-              <Check className="h-3 w-3" /> Copied
+              <Check className="h-3 w-3" /> {copiedLabel}
             </>
           ) : (
             <>
-              <Copy className="h-3 w-3" /> Copy
+              <Copy className="h-3 w-3" /> {copyLabel}
             </>
           )}
         </button>

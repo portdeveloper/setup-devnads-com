@@ -15,7 +15,18 @@ type Result =
   | { kind: "success"; txHash: string }
   | { kind: "error"; message: string };
 
-export function FaucetCard() {
+export type FaucetLabels = {
+  placeholder: string;
+  button: string;
+  sending: string;
+  successTitle: string;
+  invalidAddress: string;
+  networkError: string;
+  /** Template with {status} placeholder. */
+  fallbackError: string;
+};
+
+export function FaucetCard({ labels }: { labels: FaucetLabels }) {
   const [address, setAddress] = useState("");
   const [result, setResult] = useState<Result>({ kind: "idle" });
 
@@ -23,10 +34,7 @@ export function FaucetCard() {
     e.preventDefault();
     const trimmed = address.trim();
     if (!ADDRESS_REGEX.test(trimmed)) {
-      setResult({
-        kind: "error",
-        message: "That doesn't look like a valid 0x address (40 hex chars).",
-      });
+      setResult({ kind: "error", message: labels.invalidAddress });
       return;
     }
     setResult({ kind: "loading" });
@@ -43,7 +51,8 @@ export function FaucetCard() {
       if (!res.ok) {
         setResult({
           kind: "error",
-          message: data?.error || `Faucet returned ${res.status}.`,
+          message:
+            data?.error || labels.fallbackError.replace("{status}", String(res.status)),
         });
         return;
       }
@@ -51,7 +60,7 @@ export function FaucetCard() {
     } catch (err) {
       setResult({
         kind: "error",
-        message: err instanceof Error ? err.message : "Network error.",
+        message: err instanceof Error ? err.message : labels.networkError,
       });
     }
   };
@@ -68,13 +77,13 @@ export function FaucetCard() {
             setAddress(e.target.value);
             if (result.kind === "error") setResult({ kind: "idle" });
           }}
-          placeholder="0xYourWalletAddress"
+          placeholder={labels.placeholder}
           spellCheck={false}
           autoComplete="off"
           autoCapitalize="off"
           autoCorrect="off"
           disabled={loading}
-          aria-label="Wallet address"
+          aria-label={labels.placeholder}
           className="flex-1 min-w-0 font-mono text-sm px-3 py-2 border outline-none focus:border-[var(--brand)]"
           style={{
             background: "var(--panel)",
@@ -90,11 +99,11 @@ export function FaucetCard() {
         >
           {loading ? (
             <>
-              <Loader2 className="h-3 w-3 animate-spin" /> Sending
+              <Loader2 className="h-3 w-3 animate-spin" /> {labels.sending}
             </>
           ) : (
             <>
-              <Droplet className="h-3 w-3" /> Drip MON
+              <Droplet className="h-3 w-3" /> {labels.button}
             </>
           )}
         </button>
@@ -110,7 +119,7 @@ export function FaucetCard() {
             style={{ color: "var(--ok)" }}
           />
           <div className="min-w-0">
-            <p style={{ color: "var(--text)" }}>MON dripped to your address.</p>
+            <p style={{ color: "var(--text)" }}>{labels.successTitle}</p>
             <a
               href={`${EXPLORER_TX}/${result.txHash}`}
               target="_blank"

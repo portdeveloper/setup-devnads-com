@@ -1,6 +1,7 @@
 import Link from "next/link";
+import type { Dictionary } from "@/i18n/types";
 
-export function SiteFooter() {
+export function SiteFooter({ dict }: { dict: Dictionary }) {
   return (
     <footer
       className="mt-24 border-t"
@@ -11,7 +12,7 @@ export function SiteFooter() {
           className="font-mono uppercase tracking-[0.12em]"
           style={{ color: "var(--very-dim)" }}
         >
-          © 2026 devnads · For Monad workshops
+          {dict.footer.copyright}
         </p>
         <div className="flex gap-5">
           <Link
@@ -21,7 +22,7 @@ export function SiteFooter() {
             className="font-mono uppercase tracking-[0.12em] transition-colors hover:text-[var(--text)]"
             style={{ color: "var(--dim)" }}
           >
-            Workshop setup
+            {dict.footer.workshopSetup}
           </Link>
           <Link
             href="https://github.com/portdeveloper/se2-monad-extension"
@@ -30,7 +31,7 @@ export function SiteFooter() {
             className="font-mono uppercase tracking-[0.12em] transition-colors hover:text-[var(--text)]"
             style={{ color: "var(--dim)" }}
           >
-            Monad extension
+            {dict.footer.monadExtension}
           </Link>
           <Link
             href="https://docs.monad.xyz"
@@ -39,7 +40,7 @@ export function SiteFooter() {
             className="font-mono uppercase tracking-[0.12em] transition-colors hover:text-[var(--text)]"
             style={{ color: "var(--dim)" }}
           >
-            Monad docs
+            {dict.footer.monadDocs}
           </Link>
         </div>
       </div>
