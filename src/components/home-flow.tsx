@@ -2,10 +2,11 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Check, Copy } from "lucide-react";
 import { CodeBlock } from "@/components/code-block";
 import { OsTabs, type Os } from "@/components/os-tabs";
 import { Accordion, AccordionItem } from "@/components/accordion";
+import { SectionFrame } from "@/components/section-frame";
 import { ONE_LINERS } from "@/lib/setup-data";
 
 export function HomeFlow() {
@@ -13,12 +14,9 @@ export function HomeFlow() {
   const oneLiner = ONE_LINERS[os];
 
   return (
-    <>
+    <div className="frame">
       {/* HERO */}
-      <section
-        className="frame border-b px-6 pt-16 pb-14 md:pt-24 md:pb-20"
-        style={{ borderColor: "var(--line)" }}
-      >
+      <SectionFrame className="px-6 pt-16 pb-14 md:pt-24 md:pb-20">
         <p
           className="mono-caps mb-6 text-[11px]"
           style={{ color: "var(--very-dim)" }}
@@ -37,7 +35,7 @@ export function HomeFlow() {
         >
           Scaffold-ETH 2 (Foundry) workshops, pre-wired for{" "}
           <span style={{ color: "var(--text)" }}>Monad Testnet</span>. Pick your
-          OS and run the one-liner — under 10 minutes on a decent connection.
+          OS and run the one-liner. Under 10 minutes on a decent connection.
         </p>
 
         <div className="mt-10 flex flex-col gap-4 min-w-0">
@@ -50,13 +48,10 @@ export function HomeFlow() {
             {oneLiner.caption}
           </p>
         </div>
-      </section>
+      </SectionFrame>
 
       {/* MANUAL CTA */}
-      <section
-        className="frame border-b px-6 py-10"
-        style={{ borderColor: "var(--line)" }}
-      >
+      <SectionFrame className="px-6 py-10">
         <Link
           href={`/manual?os=${os}`}
           className="group flex items-center justify-between gap-4 -mx-6 px-6 py-4 transition-colors hover:bg-[var(--panel)]"
@@ -77,13 +72,10 @@ export function HomeFlow() {
             style={{ color: "var(--dim)" }}
           />
         </Link>
-      </section>
+      </SectionFrame>
 
       {/* TROUBLESHOOTING */}
-      <section
-        className="frame px-6 py-14"
-        style={{ borderColor: "var(--line)" }}
-      >
+      <SectionFrame className="px-6 py-14">
         <p
           className="mono-caps mb-3 text-[11px]"
           style={{ color: "var(--very-dim)" }}
@@ -134,7 +126,7 @@ export function HomeFlow() {
             is actually running in Ubuntu. If it is, run{" "}
             <code style={{ color: "var(--text)" }}>wsl --shutdown</code> from
             PowerShell, reopen Ubuntu, and try again. WSL2 forwards localhost
-            automatically — Windows Firewall can occasionally interfere on first
+            automatically. Windows Firewall can occasionally interfere on first
             run.
           </AccordionItem>
 
@@ -164,8 +156,79 @@ export function HomeFlow() {
             <code style={{ color: "var(--text)" }}>yarn deploy --network monadTestnet</code>.
           </AccordionItem>
         </Accordion>
-      </section>
-    </>
+      </SectionFrame>
+
+      {/* STILL STUCK */}
+      <SectionFrame className="px-6 py-12">
+        <p
+          className="mono-caps mb-3 text-[11px]"
+          style={{ color: "var(--very-dim)" }}
+        >
+          Still stuck
+        </p>
+        <p
+          className="text-sm leading-relaxed max-w-[640px] mb-5"
+          style={{ color: "var(--dim)" }}
+        >
+          Paste this page&apos;s URL into your AI coding agent (Claude, Cursor,
+          ChatGPT) and ask. The model has every command and troubleshooting
+          note in plain markup. Or DM{" "}
+          <a
+            href="https://t.me/portdev"
+            target="_blank"
+            rel="noreferrer"
+            style={{ color: "var(--brand)" }}
+            className="underline underline-offset-4"
+          >
+            @portdev on Telegram
+          </a>
+          .
+        </p>
+        <div className="flex flex-wrap gap-3">
+          <CopyPageUrlButton />
+          <a
+            href="https://t.me/portdev"
+            target="_blank"
+            rel="noreferrer"
+            className="mono-caps inline-flex items-center gap-1.5 text-[11px] px-4 py-2 border transition-colors hover:bg-[var(--panel)]"
+            style={{ borderColor: "var(--line)", color: "var(--text)" }}
+          >
+            DM @portdev
+          </a>
+        </div>
+      </SectionFrame>
+    </div>
+  );
+}
+
+function CopyPageUrlButton() {
+  const [copied, setCopied] = useState(false);
+  const onCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1600);
+    } catch {
+      // clipboard access denied; ignore
+    }
+  };
+  return (
+    <button
+      type="button"
+      onClick={onCopy}
+      className="mono-caps inline-flex items-center gap-1.5 text-[11px] px-4 py-2 border transition-colors hover:bg-[var(--panel)]"
+      style={{ borderColor: "var(--line)", color: "var(--text)" }}
+    >
+      {copied ? (
+        <>
+          <Check className="h-3 w-3" /> Copied
+        </>
+      ) : (
+        <>
+          <Copy className="h-3 w-3" /> Copy page URL
+        </>
+      )}
+    </button>
   );
 }
 

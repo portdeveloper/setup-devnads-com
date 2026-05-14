@@ -21,7 +21,7 @@ const STEPS_WINDOWS: Step[] = [
       "Open PowerShell as Administrator and run the bootstrap. It enables WSL2, installs Ubuntu, and prompts you to reboot.",
     code: `irm ${RAW_BASE}/windows-bootstrap.ps1 | iex`,
     lang: "powershell",
-    note: "After reboot, open Ubuntu from Start. Create a Linux username + password — these are separate from your Windows login.",
+    note: "After reboot, open Ubuntu from Start. Create a Linux username + password. These are separate from your Windows login.",
   },
   {
     num: "02",
@@ -50,7 +50,7 @@ const STEPS_WINDOWS: Step[] = [
     num: "05",
     title: "Run it",
     body: "Three terminals from inside ~/my-monad-dapp:",
-    code: "yarn chain      # terminal 1 — local Anvil\nyarn deploy     # terminal 2\nyarn start      # terminal 3 — http://localhost:3000",
+    code: "yarn chain      # terminal 1 (local Anvil)\nyarn deploy     # terminal 2\nyarn start      # terminal 3 (http://localhost:3000)",
   },
 ];
 
@@ -88,7 +88,7 @@ const STEPS_UNIX: Step[] = [
     num: "05",
     title: "Run it",
     body: "Three terminals from inside ./my-monad-dapp:",
-    code: "yarn chain      # terminal 1 — local Anvil\nyarn deploy     # terminal 2\nyarn start      # terminal 3 — http://localhost:3000",
+    code: "yarn chain      # terminal 1 (local Anvil)\nyarn deploy     # terminal 2\nyarn start      # terminal 3 (http://localhost:3000)",
   },
 ];
 

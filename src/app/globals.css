@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  /* Terminal Direction tokens — match devnads-blitz-com.
+  /* Terminal Direction tokens. Match devnads-blitz-com.
      Page = --bg. Cards = --panel + 1px --line. Nested = --panel-hi. */
   --bg: #0a0a0c;
   --panel: #111114;
@@ -19,7 +19,7 @@
   --warn: #ffb547;
   --destructive: #ef4444;
 
-  /* Code Block — hardcoded by design (one documented exception). */
+  /* Code Block. Hardcoded by design (one documented exception). */
   --code-bg: #0d0d14;
   --code-bg-header: #131318;
   --code-border: #1e1e2a;

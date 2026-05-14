@@ -6,6 +6,7 @@ import { useSearchParams } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
 import { CodeBlock } from "@/components/code-block";
 import { OsTabs, type Os } from "@/components/os-tabs";
+import { SectionFrame } from "@/components/section-frame";
 import { STEPS, isOs } from "@/lib/setup-data";
 
 function ManualFlowInner() {
@@ -15,11 +16,8 @@ function ManualFlowInner() {
   const steps = STEPS[os];
 
   return (
-    <>
-      <section
-        className="frame border-b px-6 pt-16 pb-12 md:pt-20 md:pb-14"
-        style={{ borderColor: "var(--line)" }}
-      >
+    <div className="frame">
+      <SectionFrame className="px-6 pt-16 pb-12 md:pt-20 md:pb-14">
         <Link
           href="/"
           className="mono-caps inline-flex items-center gap-1.5 text-[11px] mb-6 transition-colors hover:text-[var(--text)]"
@@ -43,19 +41,16 @@ function ManualFlowInner() {
           className="mt-5 max-w-[640px] text-base md:text-lg"
           style={{ color: "var(--dim)" }}
         >
-          Same outcome as the one-liner on the home page — just broken out so
+          Same outcome as the one-liner on the home page, just broken out so
           you can see what every command does and stop after any step.
         </p>
 
         <div className="mt-10">
           <OsTabs value={os} onChange={setOs} />
         </div>
-      </section>
+      </SectionFrame>
 
-      <section
-        className="frame px-6 py-14"
-        style={{ borderColor: "var(--line)" }}
-      >
+      <SectionFrame className="px-6 py-14">
         <ol className="flex flex-col gap-10">
           {steps.map((step) => (
             <li key={step.num} className="grid gap-4 md:grid-cols-[80px_1fr]">
@@ -93,12 +88,9 @@ function ManualFlowInner() {
             </li>
           ))}
         </ol>
-      </section>
+      </SectionFrame>
 
-      <section
-        className="frame border-t px-6 py-14"
-        style={{ borderColor: "var(--line)" }}
-      >
+      <SectionFrame className="px-6 py-12">
         <p
           className="text-sm leading-relaxed max-w-[640px]"
           style={{ color: "var(--dim)" }}
@@ -109,12 +101,12 @@ function ManualFlowInner() {
             className="underline underline-offset-4"
             style={{ color: "var(--brand)" }}
           >
-            Go back to the one-line setup
-          </Link>{" "}
-          to grab the verify command.
+            Back to the one-line setup
+          </Link>
+          .
         </p>
-      </section>
-    </>
+      </SectionFrame>
+    </div>
   );
 }
 
