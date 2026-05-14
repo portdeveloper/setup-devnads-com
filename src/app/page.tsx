@@ -1,13 +1,13 @@
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
-import { SetupFlow } from "@/components/setup-flow";
+import { HomeFlow } from "@/components/home-flow";
 
 export default function Page() {
   return (
     <>
       <SiteHeader />
       <main className="flex-1">
-        <SetupFlow />
+        <HomeFlow />
       </main>
       <SiteFooter />
     </>
