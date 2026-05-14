@@ -6,7 +6,7 @@ import { ArrowRight } from "lucide-react";
 import { CodeBlock } from "@/components/code-block";
 import { OsTabs, type Os } from "@/components/os-tabs";
 import { Accordion, AccordionItem } from "@/components/accordion";
-import { ONE_LINERS, RAW_BASE } from "@/lib/setup-data";
+import { ONE_LINERS } from "@/lib/setup-data";
 
 export function HomeFlow() {
   const [os, setOs] = useState<Os>("windows");
@@ -77,36 +77,6 @@ export function HomeFlow() {
             style={{ color: "var(--dim)" }}
           />
         </Link>
-      </section>
-
-      {/* VERIFY */}
-      <section
-        className="frame border-b px-6 py-14"
-        style={{ borderColor: "var(--line)" }}
-      >
-        <p
-          className="mono-caps mb-3 text-[11px]"
-          style={{ color: "var(--very-dim)" }}
-        >
-          Verify
-        </p>
-        <h2
-          className="text-2xl md:text-3xl tracking-tight mb-5"
-          style={{ color: "var(--text)" }}
-        >
-          Confirm your install in one command.
-        </h2>
-        <p
-          className="text-sm leading-relaxed mb-6 max-w-[640px]"
-          style={{ color: "var(--dim)" }}
-        >
-          Checks Node, Yarn, Foundry, the GitHub CLI, your git identity, and
-          that the public Monad Testnet RPC is reachable. Exits non-zero if
-          anything&apos;s missing.
-        </p>
-        <CodeBlock language="bash">
-          {`curl -fsSL ${RAW_BASE}/verify.sh | bash`}
-        </CodeBlock>
       </section>
 
       {/* TROUBLESHOOTING */}
