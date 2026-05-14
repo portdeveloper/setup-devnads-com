@@ -146,12 +146,6 @@ export const tr: Dictionary = {
         title: "WSL2 + Ubuntu kur",
         body:
           "PowerShell'i Yönetici olarak aç ve bootstrap'i çalıştır. Windows Subsystem for Linux'u (Ubuntu ile birlikte) kurar ve yeniden başlatma ister.",
-        screenshots: [
-          {
-            src: "/screenshots/win-01-powershell-admin.svg",
-            alt: "Yönetici olarak çalışan PowerShell, bootstrap tek satırlığı",
-          },
-        ],
         code: `irm ${RAW_BASE}/windows-bootstrap.ps1 | iex`,
         lang: "powershell",
         note:

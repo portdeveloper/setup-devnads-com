@@ -151,12 +151,6 @@ export const en: Dictionary = {
         lang: "powershell",
         note:
           "After reboot, open Ubuntu from Start. Create a Linux username + password. These are separate from your Windows login.",
-        screenshots: [
-          {
-            src: "/screenshots/win-01-powershell-admin.svg",
-            alt: "PowerShell running as Administrator with the bootstrap one-liner",
-          },
-        ],
       },
       {
         num: "02",
