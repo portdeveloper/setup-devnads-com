@@ -3,14 +3,14 @@
 :root {
   /* Terminal Direction tokens. Match devnads-blitz-com.
      Page = --bg. Cards = --panel + 1px --line. Nested = --panel-hi. */
-  --bg: #0a0a0c;
-  --panel: #111114;
-  --panel-hi: #16161b;
-  --line: #23232a;
-  --line-hi: #2e2e36;
-  --text: #e7e7ea;
-  --dim: #8a8a93;
-  --very-dim: #56565d;
+  --bg: #e7e7ea;
+  --panel: #f4f4f6;
+  --panel-hi: #ffffff;
+  --line: #c8c8d0;
+  --line-hi: #b4b4be;
+  --text: #16161b;
+  --dim: #6a6a75;
+  --very-dim: #8a8a93;
   --brand: #836ef9;
   --brand-hi: #a594ff;
   --brand-pressed: #6e54ff;
