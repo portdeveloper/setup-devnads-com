@@ -169,8 +169,6 @@ export const en: Dictionary = {
           },
         ],
         code: `bash -c "$(curl -fsSL ${RAW_BASE}/wsl-bootstrap.sh)"`,
-        note:
-          "Close and reopen the VSCode terminal after this finishes so PATH picks up the new tools.",
       },
       {
         num: "03",

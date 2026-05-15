@@ -158,8 +158,6 @@ export const tr: Dictionary = {
         body:
           "VSCode'da [WSL eklentisini](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl) kur. Sonra VSCode'u başlat, F1'e bas ve \"WSL: Connect to WSL\" seç (veya belirli bir dağıtım için \"WSL: Connect to WSL using Distro\"). Açılan pencerede alt kenardan yukarı sürükleyerek terminal aç, sonra otomatik kurulum için aşağıdaki komutu kopyala.",
         code: `bash -c "$(curl -fsSL ${RAW_BASE}/wsl-bootstrap.sh)"`,
-        note:
-          "Bittikten sonra VSCode terminalini kapatıp yeniden aç, böylece PATH yeni araçları görür.",
         screenshots: [
           {
             src: "/screenshots/win-02a-command-palette.png",
