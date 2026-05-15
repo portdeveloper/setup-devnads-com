@@ -37,13 +37,14 @@ export function HomeFlow({
 
   const aiPrompt = `Walk me through this Monad workshop setup page and help me when I get stuck: ${PAGE_URL}`;
   const encoded = encodeURIComponent(aiPrompt);
-  // URLs match the working patterns in
-  // github.com/portdeveloper/docusaurus-plugin-copy-page-button.
-  // ChatGPT uses the legacy chat.openai.com host; Gemini wants
-  // /guided-learning with ?query= (not /app?q=).
-  const chatgptUrl = `https://chat.openai.com/?q=${encoded}`;
+  // chat.openai.com 308s to chatgpt.com but the redirect drops the user
+  // out of the composer-prefill flow; hit chatgpt.com directly with
+  // hints=search so the prompt is treated as a question.
+  // Gemini's /guided-learning routes to the tutoring surface — the
+  // regular chat composer is /app, which is what prefills from ?q=.
+  const chatgptUrl = `https://chatgpt.com/?hints=search&q=${encoded}`;
   const claudeUrl = `https://claude.ai/new?q=${encoded}`;
-  const geminiUrl = `https://gemini.google.com/guided-learning?query=${encoded}`;
+  const geminiUrl = `https://gemini.google.com/app?q=${encoded}`;
 
   return (
     <div className="frame">
@@ -279,8 +280,11 @@ function AskAiButton({
   const onClick = () => {
     // Fire-and-forget clipboard write so the window.open below stays
     // inside the user-gesture (some browsers block popups otherwise).
+    // Don't pass "noreferrer" — Gemini drops the ?q= prefill when the
+    // Referer header is missing. Modern browsers default to noopener
+    // for target=_blank links anyway.
     navigator.clipboard.writeText(prompt).catch(() => {});
-    window.open(href, "_blank", "noopener,noreferrer");
+    window.open(href, "_blank");
     setCopied(true);
     setTimeout(() => setCopied(false), 1800);
   };
