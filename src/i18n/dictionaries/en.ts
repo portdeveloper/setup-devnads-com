@@ -176,7 +176,7 @@ export const en: Dictionary = {
         num: "03",
         title: "Configure git + GitHub",
         body:
-          "It's always good to have git.",
+          "Git tracks every change you make so you can undo mistakes, branch off new ideas, and share your work. GitHub is where that work lives online, gets reviewed, and turns into the project history people actually trust. Setting your name and signing in once now means every commit and push later just works.",
         code:
           'git config --global user.name  "Your Name"\ngit config --global user.email "you@example.com"\ngh auth login',
         screenshots: [

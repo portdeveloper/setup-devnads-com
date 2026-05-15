@@ -175,7 +175,7 @@ export const tr: Dictionary = {
         num: "03",
         title: "git + GitHub'ı ayarla",
         body:
-          "git her zaman iyidir.",
+          "Git yaptığın her değişikliği takip eder. Hataları geri alabilir, yeni fikirler için dal açabilir ve işini başkalarıyla paylaşabilirsin. GitHub ise işinin online yaşadığı, incelendiği ve insanların güvendiği proje geçmişine dönüştüğü yer. Adını ayarlayıp şimdi bir kez giriş yapmak, sonraki tüm commit ve push'ların sorunsuz çalışması demek.",
         code:
           'git config --global user.name  "Adın"\ngit config --global user.email "sen@ornek.com"\ngh auth login',
         screenshots: [
