@@ -122,6 +122,11 @@ export function HomeFlow({
                   {renderInline(step.body)}
                 </p>
               )}
+              {step.code && (
+                <CodeBlock language={step.lang} {...cb}>
+                  {step.code}
+                </CodeBlock>
+              )}
               {step.screenshots?.length ? (
                 <div className="flex flex-col gap-3">
                   {step.screenshots.map((sc, j) => (
@@ -137,11 +142,6 @@ export function HomeFlow({
                   ))}
                 </div>
               ) : null}
-              {step.code && (
-                <CodeBlock language={step.lang} {...cb}>
-                  {step.code}
-                </CodeBlock>
-              )}
               {step.note && (
                 <p
                   className="text-sm leading-relaxed border-l-2 pl-3"
