@@ -173,7 +173,8 @@ export const en: Dictionary = {
       {
         num: "03",
         title: "Run it",
-        body: "Three terminals from inside ~/my-monad-dapp:",
+        body:
+          "Pull up from the bottom edge again to open a terminal, then click the split terminal icon (or press Ctrl+Shift+5) twice to get three side by side. Run one command in each:",
         code:
           "yarn chain      # terminal 1 (local Anvil)\nyarn deploy     # terminal 2\nyarn start      # terminal 3 (http://localhost:3000)",
         screenshots: [

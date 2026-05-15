@@ -172,7 +172,8 @@ export const tr: Dictionary = {
       {
         num: "03",
         title: "Çalıştır",
-        body: "~/my-monad-dapp içinden üç terminal:",
+        body:
+          "Alt kenardan tekrar yukarı sürükleyerek terminal aç, sonra split terminal ikonuna tıkla (veya Ctrl+Shift+5'e bas) ve iki kez böl, böylece üç tane yan yana terminal olsun. Her birinde bir komut çalıştır:",
         code:
           "yarn chain      # terminal 1 (yerel Anvil)\nyarn deploy     # terminal 2\nyarn start      # terminal 3 (http://localhost:3000)",
         screenshots: [
