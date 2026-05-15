@@ -11,13 +11,16 @@ export type OneLinerCopy = {
   secondary?: { lang: string; code: string; caption: string };
 };
 
+export type CodeEntry = { code: string; caption?: string };
+
 export type StepCopy = {
   num: string;
   title: string;
   body?: string;
-  // A single block renders as one CodeBlock; an array renders one block per
-  // entry so multiple commands can be presented as separate copyable chunks.
-  code?: string | string[];
+  // A bare string renders as one CodeBlock. An array renders one block per
+  // entry; each entry can be a string or `{ code, caption }` to show a short
+  // explanation under the block.
+  code?: string | (string | CodeEntry)[];
   lang?: string;
   note?: string;
   screenshots?: { src: string; alt: string }[];

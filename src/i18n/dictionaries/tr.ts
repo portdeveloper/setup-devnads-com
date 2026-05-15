@@ -175,9 +175,9 @@ export const tr: Dictionary = {
         body:
           "Alt kenardan tekrar yukarı sürükleyerek terminal aç, sonra split terminal ikonuna tıkla (veya Ctrl+Shift+5'e bas) ve iki kez böl, böylece üç tane yan yana terminal olsun. Her birinde bir komut çalıştır, sonra http://localhost:3000'i aç.",
         code: [
-          "yarn chain",
-          "yarn deploy",
-          "yarn start",
+          { code: "yarn chain", caption: "Yerel bir Anvil zinciri başlatır, böylece dapp'inin konuşacağı bir blockchain olur." },
+          { code: "yarn deploy", caption: "Kontratları derler ve yerel zincire yükler." },
+          { code: "yarn start", caption: "Next.js frontend'ini http://localhost:3000'de açar." },
         ],
         screenshots: [
           {
@@ -225,9 +225,9 @@ export const tr: Dictionary = {
         body:
           "./my-monad-dapp içinden üç terminal aç (split pane veya yeni sekme) ve her birinde bir komut çalıştır, sonra http://localhost:3000'i aç.",
         code: [
-          "yarn chain",
-          "yarn deploy",
-          "yarn start",
+          { code: "yarn chain", caption: "Yerel bir Anvil zinciri başlatır, böylece dapp'inin konuşacağı bir blockchain olur." },
+          { code: "yarn deploy", caption: "Kontratları derler ve yerel zincire yükler." },
+          { code: "yarn start", caption: "Next.js frontend'ini http://localhost:3000'de açar." },
         ],
       },
     ],

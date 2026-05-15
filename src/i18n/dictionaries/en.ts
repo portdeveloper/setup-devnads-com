@@ -176,9 +176,9 @@ export const en: Dictionary = {
         body:
           "Pull up from the bottom edge again to open a terminal, then click the split terminal icon (or press Ctrl+Shift+5) twice to get three side by side. Run one command in each, then open http://localhost:3000.",
         code: [
-          "yarn chain",
-          "yarn deploy",
-          "yarn start",
+          { code: "yarn chain", caption: "Starts a local Anvil chain so your dapp has somewhere to talk to." },
+          { code: "yarn deploy", caption: "Compiles the contracts and pushes them onto the local chain." },
+          { code: "yarn start", caption: "Boots the Next.js frontend at http://localhost:3000." },
         ],
         screenshots: [
           {
@@ -226,9 +226,9 @@ export const en: Dictionary = {
         body:
           "From inside ./my-monad-dapp, open three terminals (split panes or new tabs) and run one command in each, then open http://localhost:3000.",
         code: [
-          "yarn chain",
-          "yarn deploy",
-          "yarn start",
+          { code: "yarn chain", caption: "Starts a local Anvil chain so your dapp has somewhere to talk to." },
+          { code: "yarn deploy", caption: "Compiles the contracts and pushes them onto the local chain." },
+          { code: "yarn start", caption: "Boots the Next.js frontend at http://localhost:3000." },
         ],
       },
     ],

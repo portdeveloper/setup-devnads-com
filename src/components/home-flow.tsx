@@ -123,11 +123,25 @@ export function HomeFlow({
                 </p>
               )}
               {step.code &&
-                (Array.isArray(step.code) ? step.code : [step.code]).map((c, j) => (
-                  <CodeBlock key={j} language={step.lang} {...cb}>
-                    {c}
-                  </CodeBlock>
-                ))}
+                (Array.isArray(step.code) ? step.code : [step.code]).map((entry, j) => {
+                  const code = typeof entry === "string" ? entry : entry.code;
+                  const caption = typeof entry === "string" ? undefined : entry.caption;
+                  return (
+                    <div key={j} className="space-y-1.5">
+                      <CodeBlock language={step.lang} {...cb}>
+                        {code}
+                      </CodeBlock>
+                      {caption && (
+                        <p
+                          className="text-xs leading-relaxed"
+                          style={{ color: "var(--dim)" }}
+                        >
+                          {renderInline(caption)}
+                        </p>
+                      )}
+                    </div>
+                  );
+                })}
               {step.screenshots?.length ? (
                 <div className="flex flex-col gap-3">
                   {step.screenshots.map((sc, j) => (
