@@ -53,7 +53,7 @@ export const en: Dictionary = {
       wsl: {
         title: 'wsl --install says "feature not enabled"',
         body:
-          "Hardware virtualization is disabled in BIOS. Reboot into BIOS/UEFI and enable `Intel VT-x` or `AMD-V` (sometimes labeled `SVM`).",
+          "Hardware virtualization is disabled in BIOS. Reboot into BIOS/UEFI and enable `Intel VT-x` or `AMD-V` (sometimes labeled `SVM`). [Microsoft's guide](https://support.microsoft.com/en-us/windows/enable-virtualization-on-windows-11-pcs-c5578302-6e43-4b4b-a449-8ced115f58e1) and the [WSL troubleshooting docs](https://learn.microsoft.com/windows/wsl/troubleshooting) walk through it per-vendor.",
       },
       forge: {
         title: "forge: command not found after install",
@@ -150,7 +150,7 @@ export const en: Dictionary = {
         code: `irm ${RAW_BASE}/windows-bootstrap.ps1 | iex`,
         lang: "powershell",
         note:
-          "Make sure VSCode is installed. You'll need it in the next step. If not, install it from [code.visualstudio.com](https://code.visualstudio.com/download).",
+          "Make sure VSCode is installed. You'll need it in the next step. If not, install it from [code.visualstudio.com](https://code.visualstudio.com/download). If the script warns that hardware virtualization is disabled, you need to enable `VT-x` (Intel) or `AMD-V` / `SVM` (AMD) in your BIOS/UEFI — follow [Microsoft's guide](https://support.microsoft.com/en-us/windows/enable-virtualization-on-windows-11-pcs-c5578302-6e43-4b4b-a449-8ced115f58e1) or the [WSL troubleshooting docs](https://learn.microsoft.com/windows/wsl/troubleshooting), reboot, and re-run the script.",
         screenshots: [
           {
             src: "/screenshots/win-01-powershell-admin.png",

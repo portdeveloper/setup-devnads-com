@@ -52,7 +52,7 @@ export const tr: Dictionary = {
       wsl: {
         title: 'wsl --install "feature not enabled" diyor',
         body:
-          "Donanım sanallaştırması BIOS'ta kapalı. BIOS/UEFI'ye girip `Intel VT-x` veya `AMD-V` (bazen `SVM` olarak etiketlenir) seçeneğini aç.",
+          "Donanım sanallaştırması BIOS'ta kapalı. BIOS/UEFI'ye girip `Intel VT-x` veya `AMD-V` (bazen `SVM` olarak etiketlenir) seçeneğini aç. [Microsoft'un rehberi](https://support.microsoft.com/en-us/windows/enable-virtualization-on-windows-11-pcs-c5578302-6e43-4b4b-a449-8ced115f58e1) ve [WSL troubleshooting dokümanı](https://learn.microsoft.com/windows/wsl/troubleshooting) üretici bazında adım adım anlatıyor.",
       },
       forge: {
         title: "Kurulumdan sonra forge: command not found",
@@ -149,7 +149,7 @@ export const tr: Dictionary = {
         code: `irm ${RAW_BASE}/windows-bootstrap.ps1 | iex`,
         lang: "powershell",
         note:
-          "VSCode'un kurulu olduğundan emin ol. Bir sonraki adımda ihtiyacın olacak. Kurulu değilse buradan kur: [code.visualstudio.com](https://code.visualstudio.com/download).",
+          "VSCode'un kurulu olduğundan emin ol. Bir sonraki adımda ihtiyacın olacak. Kurulu değilse buradan kur: [code.visualstudio.com](https://code.visualstudio.com/download). Script donanım sanallaştırmasının kapalı olduğunu söylerse BIOS/UEFI'den `VT-x` (Intel) veya `AMD-V` / `SVM` (AMD) seçeneğini etkinleştirmen gerek. [Microsoft'un rehberini](https://support.microsoft.com/en-us/windows/enable-virtualization-on-windows-11-pcs-c5578302-6e43-4b4b-a449-8ced115f58e1) veya [WSL troubleshooting dokümanını](https://learn.microsoft.com/windows/wsl/troubleshooting) izle, yeniden başlat ve script'i tekrar çalıştır.",
         screenshots: [
           {
             src: "/screenshots/win-01-powershell-admin.png",
