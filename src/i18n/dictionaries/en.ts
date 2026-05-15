@@ -1,8 +1,32 @@
 import type { Dictionary } from "../types";
 
 const EXTENSION = "portdeveloper/se2-monad-extension";
+// Bootstrap scripts are pinned to a specific commit so the checksums below
+// stay valid. When you update a script, regenerate via
+// `./tools/refresh-bootstrap-checksums.sh` in se2-workshop-windows-setup
+// and bump PINNED_REF + the matching SHA256 here together.
+const PINNED_REF = "3a3e22283de2b608704db7e6164dff491c4b22ca";
 const RAW_BASE =
-  "https://raw.githubusercontent.com/portdeveloper/se2-workshop-windows-setup/main";
+  `https://raw.githubusercontent.com/portdeveloper/se2-workshop-windows-setup/${PINNED_REF}`;
+const SHA = {
+  windows: "20fd5c7a149d6bcce4173836acd8e8500ffbfe70569c4d132ca462454eb762fd",
+  wsl: "df52dae4d9594f8708af5b5ca2e413148c45b180596340e28663bcbdc29e6548",
+  mac: "eb8b08a743e036db6eb6243bbad20165c38c92e58099b0facfbaa3de08a957f4",
+};
+
+// Verified-install one-liners: download to a temp file, compare SHA-256
+// against the pinned hash, then execute. Stops a hostile fork or compromised
+// host from running unverified content on attendees' machines.
+const winInstall = (script: string, sha: string) =>
+  `$url = '${RAW_BASE}/${script}'
+$tmp = "$env:TEMP\\workshop-bootstrap.ps1"
+Invoke-WebRequest -Uri $url -OutFile $tmp
+if ((Get-FileHash $tmp -Algorithm SHA256).Hash.ToLower() -eq '${sha}') { PowerShell -NoProfile -ExecutionPolicy Bypass -File $tmp } else { Write-Error 'Error: Checksum mismatch! Contact security!' }`;
+
+const shInstall = (script: string, sha: string) =>
+  `url='${RAW_BASE}/${script}'
+tmp=$(mktemp) && curl -fsSLo "$tmp" "$url"
+if [ "$(sha256sum "$tmp" | awk '{print $1}')" = '${sha}' ]; then bash "$tmp"; else echo 'Error: Checksum mismatch! Contact security!' >&2; fi`;
 
 export const en: Dictionary = {
   meta: {
@@ -122,25 +146,25 @@ export const en: Dictionary = {
   oneLiners: {
     windows: {
       lang: "powershell",
-      code: `irm ${RAW_BASE}/windows-bootstrap.ps1 | iex`,
+      code: winInstall("windows-bootstrap.ps1", SHA.windows),
       caption:
         "Step 1, in Administrator PowerShell. Installs WSL2 + Ubuntu, then prompts to reboot.",
       secondary: {
         lang: "bash",
-        code: `bash -c "$(curl -fsSL ${RAW_BASE}/wsl-bootstrap.sh)"`,
+        code: shInstall("wsl-bootstrap.sh", SHA.wsl),
         caption:
           "Step 2, inside Ubuntu after reboot. Installs the toolchain, asks for your git identity, and scaffolds the dapp.",
       },
     },
     mac: {
       lang: "bash",
-      code: `bash -c "$(curl -fsSL ${RAW_BASE}/mac-bootstrap.sh)"`,
+      code: shInstall("mac-bootstrap.sh", SHA.mac),
       caption:
         "Run in Terminal. Installs Foundry + Node LTS, asks for your git identity, and scaffolds the dapp.",
     },
     linux: {
       lang: "bash",
-      code: `bash -c "$(curl -fsSL ${RAW_BASE}/wsl-bootstrap.sh)"`,
+      code: shInstall("wsl-bootstrap.sh", SHA.wsl),
       caption:
         "Run in your terminal. Installs the toolchain, asks for your git identity, and scaffolds the dapp.",
     },
@@ -152,7 +176,7 @@ export const en: Dictionary = {
         title: "Install WSL2 + Ubuntu",
         body:
           "Open PowerShell as Administrator and run the bootstrap. It installs Windows Subsystem for Linux (with Ubuntu) and prompts you to reboot.",
-        code: `irm ${RAW_BASE}/windows-bootstrap.ps1 | iex`,
+        code: winInstall("windows-bootstrap.ps1", SHA.windows),
         lang: "powershell",
         note: [
           "Reboot your computer when the script finishes. WSL only becomes usable after a full restart, so step 2 won't work until you've rebooted.",
@@ -181,7 +205,7 @@ export const en: Dictionary = {
             alt: "Dragging the bottom edge of VSCode up to reveal the integrated terminal",
           },
         ],
-        code: `bash -c "$(curl -fsSL ${RAW_BASE}/wsl-bootstrap.sh)"`,
+        code: shInstall("wsl-bootstrap.sh", SHA.wsl),
         note:
           "Make sure the terminal is a WSL/Ubuntu shell, not Windows PowerShell or cmd. You should see a `$` prompt with a Linux username (something like `you@DESKTOP:~$`). Running this in PowerShell will fail because Windows doesn't have `bash` — if that happens, go back and run \"WSL: Connect to WSL\" first.",
       },

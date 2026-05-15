@@ -1,8 +1,28 @@
 import type { Dictionary } from "../types";
 
 const EXTENSION = "portdeveloper/se2-monad-extension";
+// Keep in lockstep with the EN dictionary — same pinned commit, same
+// hashes. Regenerate via tools/refresh-bootstrap-checksums.sh in the
+// se2-workshop-windows-setup repo.
+const PINNED_REF = "3a3e22283de2b608704db7e6164dff491c4b22ca";
 const RAW_BASE =
-  "https://raw.githubusercontent.com/portdeveloper/se2-workshop-windows-setup/main";
+  `https://raw.githubusercontent.com/portdeveloper/se2-workshop-windows-setup/${PINNED_REF}`;
+const SHA = {
+  windows: "20fd5c7a149d6bcce4173836acd8e8500ffbfe70569c4d132ca462454eb762fd",
+  wsl: "df52dae4d9594f8708af5b5ca2e413148c45b180596340e28663bcbdc29e6548",
+  mac: "eb8b08a743e036db6eb6243bbad20165c38c92e58099b0facfbaa3de08a957f4",
+};
+
+const winInstall = (script: string, sha: string) =>
+  `$url = '${RAW_BASE}/${script}'
+$tmp = "$env:TEMP\\workshop-bootstrap.ps1"
+Invoke-WebRequest -Uri $url -OutFile $tmp
+if ((Get-FileHash $tmp -Algorithm SHA256).Hash.ToLower() -eq '${sha}') { PowerShell -NoProfile -ExecutionPolicy Bypass -File $tmp } else { Write-Error 'Hata: Checksum eşleşmedi! Güvenliğe bildir!' }`;
+
+const shInstall = (script: string, sha: string) =>
+  `url='${RAW_BASE}/${script}'
+tmp=$(mktemp) && curl -fsSLo "$tmp" "$url"
+if [ "$(sha256sum "$tmp" | awk '{print $1}')" = '${sha}' ]; then bash "$tmp"; else echo 'Hata: Checksum eşleşmedi! Güvenliğe bildir!' >&2; fi`;
 
 export const tr: Dictionary = {
   meta: {
@@ -121,25 +141,25 @@ export const tr: Dictionary = {
   oneLiners: {
     windows: {
       lang: "powershell",
-      code: `irm ${RAW_BASE}/windows-bootstrap.ps1 | iex`,
+      code: winInstall("windows-bootstrap.ps1", SHA.windows),
       caption:
         "Adım 1, Yönetici PowerShell'de. WSL2 + Ubuntu'yu kurar, sonra yeniden başlatma ister.",
       secondary: {
         lang: "bash",
-        code: `bash -c "$(curl -fsSL ${RAW_BASE}/wsl-bootstrap.sh)"`,
+        code: shInstall("wsl-bootstrap.sh", SHA.wsl),
         caption:
           "Adım 2, yeniden başlattıktan sonra Ubuntu içinde. Toolchain'i kurar, git kimliğini sorar ve dapp'i scaffold eder.",
       },
     },
     mac: {
       lang: "bash",
-      code: `bash -c "$(curl -fsSL ${RAW_BASE}/mac-bootstrap.sh)"`,
+      code: shInstall("mac-bootstrap.sh", SHA.mac),
       caption:
         "Terminal'de çalıştır. Foundry + Node LTS'i kurar, git kimliğini sorar ve dapp'i scaffold eder.",
     },
     linux: {
       lang: "bash",
-      code: `bash -c "$(curl -fsSL ${RAW_BASE}/wsl-bootstrap.sh)"`,
+      code: shInstall("wsl-bootstrap.sh", SHA.wsl),
       caption:
         "Terminalinde çalıştır. Toolchain'i kurar, git kimliğini sorar ve dapp'i scaffold eder.",
     },
@@ -151,7 +171,7 @@ export const tr: Dictionary = {
         title: "WSL2 + Ubuntu kur",
         body:
           "PowerShell'i Yönetici olarak aç ve bootstrap'i çalıştır. Windows Subsystem for Linux'u (Ubuntu ile birlikte) kurar ve yeniden başlatma ister.",
-        code: `irm ${RAW_BASE}/windows-bootstrap.ps1 | iex`,
+        code: winInstall("windows-bootstrap.ps1", SHA.windows),
         lang: "powershell",
         note: [
           "Script bitince bilgisayarını yeniden başlat. WSL ancak tam bir yeniden başlatmadan sonra kullanılabilir hale gelir, yani yeniden başlatmadan 2. adım çalışmaz.",
@@ -170,7 +190,7 @@ export const tr: Dictionary = {
         title: "Geliştirme toolchain'ini kur",
         body:
           "VSCode'da [WSL eklentisini](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl) kur. Sonra VSCode'u başlat, F1'e bas ve \"WSL: Connect to WSL\" seç (veya belirli bir dağıtım için \"WSL: Connect to WSL using Distro\"). Açılan pencerede alt kenardan yukarı sürükleyerek terminal aç, sonra otomatik kurulum için aşağıdaki komutu kopyala.",
-        code: `bash -c "$(curl -fsSL ${RAW_BASE}/wsl-bootstrap.sh)"`,
+        code: shInstall("wsl-bootstrap.sh", SHA.wsl),
         note:
           "Terminalin WSL/Ubuntu shell'i olduğundan emin ol, Windows PowerShell veya cmd değil. Linux kullanıcı adıyla bir `$` istemini görmelisin (örn: `sen@DESKTOP:~$`). PowerShell'de çalıştırırsan başarısız olur çünkü Windows'ta `bash` yok. Eğer öyle olursa geri dön ve önce \"WSL: Connect to WSL\" çalıştır.",
         screenshots: [
