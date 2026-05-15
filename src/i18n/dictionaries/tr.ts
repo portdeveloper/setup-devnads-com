@@ -163,6 +163,8 @@ export const tr: Dictionary = {
         body:
           "VSCode'da [WSL eklentisini](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl) kur. Sonra VSCode'u başlat, F1'e bas ve \"WSL: Connect to WSL\" seç (veya belirli bir dağıtım için \"WSL: Connect to WSL using Distro\"). Açılan pencerede alt kenardan yukarı sürükleyerek terminal aç, sonra otomatik kurulum için aşağıdaki komutu kopyala.",
         code: `bash -c "$(curl -fsSL ${RAW_BASE}/wsl-bootstrap.sh)"`,
+        note:
+          "Terminalin WSL/Ubuntu shell'i olduğundan emin ol, Windows PowerShell veya cmd değil. Linux kullanıcı adıyla bir `$` istemini görmelisin (örn: `sen@DESKTOP:~$`). PowerShell'de çalıştırırsan başarısız olur çünkü Windows'ta `bash` yok. Eğer öyle olursa geri dön ve önce \"WSL: Connect to WSL\" çalıştır.",
         screenshots: [
           {
             src: "/screenshots/win-02a-command-palette.png",

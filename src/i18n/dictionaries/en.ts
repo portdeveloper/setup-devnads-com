@@ -174,6 +174,8 @@ export const en: Dictionary = {
           },
         ],
         code: `bash -c "$(curl -fsSL ${RAW_BASE}/wsl-bootstrap.sh)"`,
+        note:
+          "Make sure the terminal is a WSL/Ubuntu shell, not Windows PowerShell or cmd. You should see a `$` prompt with a Linux username (something like `you@DESKTOP:~$`). Running this in PowerShell will fail because Windows doesn't have `bash` — if that happens, go back and run \"WSL: Connect to WSL\" first.",
       },
       {
         num: "03",
