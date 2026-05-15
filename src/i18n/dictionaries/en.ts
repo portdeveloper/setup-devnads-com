@@ -16,16 +16,13 @@ export const en: Dictionary = {
     githubAria: "GitHub",
   },
   hero: {
-    eyebrow: "Developer setup",
     title: "Get your machine ready for Monad.",
     body: "Pick your OS and run the one-liner. Under 10 minutes on a decent connection.",
   },
   manualCta: {
-    eyebrow: "Prefer step-by-step",
     template: "See the manual install for {os}.",
   },
   afterInstall: {
-    eyebrow: "After the install finishes",
     title: "Run these to start developing.",
     body:
       "Open three terminals from inside your project directory. The first spins up a local Anvil node, the second deploys your contracts to it, the third serves the dapp.",
@@ -33,7 +30,6 @@ export const en: Dictionary = {
       "To deploy to Monad Testnet later: gh auth login, yarn deploy --network monadTestnet.",
   },
   faucet: {
-    eyebrow: "Monad Testnet faucet",
     title: "Grab some MON to deploy with.",
     body:
       "Drop in your wallet address and we'll send testnet MON straight to it. Rate-limited per address and per IP.",
@@ -47,7 +43,6 @@ export const en: Dictionary = {
     fallbackError: "Faucet returned {status}.",
   },
   troubleshooting: {
-    eyebrow: "Troubleshooting",
     title: "When things go sideways.",
     items: {
       wsl: {
@@ -88,7 +83,6 @@ export const en: Dictionary = {
     },
   },
   stillStuck: {
-    eyebrow: "Still stuck",
     body:
       "Paste this page's URL into your AI coding agent (Claude, Cursor, ChatGPT) and ask. The model has every command and troubleshooting note in plain markup. Or DM [@portdev on Telegram](https://t.me/portdev).",
     copyButton: "Copy page URL",

@@ -16,16 +16,13 @@ export const tr: Dictionary = {
     githubAria: "GitHub",
   },
   hero: {
-    eyebrow: "Geliştirici kurulumu",
     title: "Makineni Monad için hazırla.",
     body: "İşletim sistemini seç ve tek satırı çalıştır. Düzgün bir bağlantıda 10 dakikadan kısa sürer.",
   },
   manualCta: {
-    eyebrow: "Adım adım gitmek istersen",
     template: "{os} için manuel kurulumu gör.",
   },
   afterInstall: {
-    eyebrow: "Kurulum bittiğinde",
     title: "Geliştirmeye başlamak için bunları çalıştır.",
     body:
       "Proje dizini içinde üç terminal aç. Birincisi yerel bir Anvil node'u başlatır, ikincisi sözleşmeleri ona deploy eder, üçüncüsü dapp'i sunar.",
@@ -33,7 +30,6 @@ export const tr: Dictionary = {
       "Daha sonra Monad Testnet'e deploy etmek için: gh auth login, yarn deploy --network monadTestnet.",
   },
   faucet: {
-    eyebrow: "Monad Testnet musluğu",
     title: "Deploy için biraz MON kap.",
     body:
       "Cüzdan adresini bırak, testnet MON'u doğrudan ona göndereceğiz. Adres ve IP başına oran sınırlı.",
@@ -46,7 +42,6 @@ export const tr: Dictionary = {
     fallbackError: "Musluk {status} döndü.",
   },
   troubleshooting: {
-    eyebrow: "Sorun giderme",
     title: "İşler ters gittiğinde.",
     items: {
       wsl: {
@@ -87,7 +82,6 @@ export const tr: Dictionary = {
     },
   },
   stillStuck: {
-    eyebrow: "Hâlâ takıldıysan",
     body:
       "Bu sayfanın URL'sini yapay zeka kodlama ajanına (Claude, Cursor, ChatGPT) yapıştırıp sor. Modelin elinde her komut ve sorun giderme notu düz markup olarak var. Ya da [Telegram'dan @portdev'e](https://t.me/portdev) DM at.",
     copyButton: "Sayfa URL'sini kopyala",

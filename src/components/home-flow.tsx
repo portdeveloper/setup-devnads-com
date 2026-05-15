@@ -37,14 +37,14 @@ export function HomeFlow({
 
   const aiPrompt = `Walk me through this Monad workshop setup page and help me when I get stuck: ${PAGE_URL}`;
   const encoded = encodeURIComponent(aiPrompt);
-  // chat.openai.com 308s to chatgpt.com but the redirect drops the user
-  // out of the composer-prefill flow; hit chatgpt.com directly with
-  // hints=search so the prompt is treated as a question.
-  // Gemini's /guided-learning routes to the tutoring surface — the
-  // regular chat composer is /app, which is what prefills from ?q=.
+  // chat.openai.com 308s to chatgpt.com but the redirect drops the
+  // user out of the composer-prefill flow; hit chatgpt.com directly
+  // with hints=search so the prompt is treated as a question.
+  // Gemini intentionally has no button: it ignores ?q= prefill on
+  // cross-site link clicks, so the "Copy page URL" button is the
+  // honest path for Gemini and any other AI not listed here.
   const chatgptUrl = `https://chatgpt.com/?hints=search&q=${encoded}`;
   const claudeUrl = `https://claude.ai/new?q=${encoded}`;
-  const geminiUrl = `https://gemini.google.com/app?q=${encoded}`;
 
   return (
     <div className="frame">
@@ -52,9 +52,6 @@ export function HomeFlow({
       <SectionFrame className="px-6 pt-16 pb-12 md:pt-24 md:pb-16">
         <div className="grid gap-10 md:grid-cols-[1fr_auto] md:items-start md:gap-12">
           <div className="min-w-0">
-            <p className="mono-caps mb-6 text-[11px]" style={{ color: "var(--very-dim)" }}>
-              {dict.hero.eyebrow}
-            </p>
             <h1
               className="text-4xl md:text-5xl leading-[1.05] tracking-tight font-medium"
               style={{ color: "var(--text)" }}
@@ -79,7 +76,7 @@ export function HomeFlow({
             >
               <QRCode
                 value={PAGE_URL}
-                size={208}
+                size={360}
                 bgColor="#e7e7ea"
                 fgColor="#0a0a0c"
                 level="M"
@@ -160,9 +157,6 @@ export function HomeFlow({
 
       {/* FAUCET */}
       <SectionFrame className="px-6 py-14">
-        <p className="mono-caps mb-3 text-[11px]" style={{ color: "var(--very-dim)" }}>
-          {dict.faucet.eyebrow}
-        </p>
         <h2 className="text-2xl md:text-3xl tracking-tight mb-5" style={{ color: "var(--text)" }}>
           {dict.faucet.title}
         </h2>
@@ -184,9 +178,6 @@ export function HomeFlow({
 
       {/* TROUBLESHOOTING */}
       <SectionFrame className="px-6 py-14">
-        <p className="mono-caps mb-3 text-[11px]" style={{ color: "var(--very-dim)" }}>
-          {dict.troubleshooting.eyebrow}
-        </p>
         <h2 className="text-2xl md:text-3xl tracking-tight mb-8" style={{ color: "var(--text)" }}>
           {dict.troubleshooting.title}
         </h2>
@@ -201,16 +192,12 @@ export function HomeFlow({
 
       {/* STILL STUCK */}
       <SectionFrame className="px-6 py-12">
-        <p className="mono-caps mb-3 text-[11px]" style={{ color: "var(--very-dim)" }}>
-          {dict.stillStuck.eyebrow}
-        </p>
         <p className="text-sm leading-relaxed max-w-[640px] mb-5" style={{ color: "var(--dim)" }}>
           {renderInline(dict.stillStuck.body)}
         </p>
         <div className="flex flex-wrap gap-3">
           <AskAiButton brand="ChatGPT" href={chatgptUrl} prompt={aiPrompt} />
           <AskAiButton brand="Claude" href={claudeUrl} prompt={aiPrompt} />
-          <AskAiButton brand="Gemini" href={geminiUrl} prompt={aiPrompt} />
           <CopyPageUrlButton
             copyLabel={dict.stillStuck.copyButton}
             copiedLabel={dict.stillStuck.copiedButton}
@@ -278,24 +265,24 @@ function AskAiButton({
 }) {
   const [copied, setCopied] = useState(false);
   const onClick = () => {
-    // Fire-and-forget clipboard write so the window.open below stays
-    // inside the user-gesture (some browsers block popups otherwise).
-    // Don't pass "noreferrer" — Gemini drops the ?q= prefill when the
-    // Referer header is missing. Modern browsers default to noopener
-    // for target=_blank links anyway.
+    // Side-effect only: copy the prompt as a fallback. The anchor's
+    // default click handles navigation. A real user-clicked link is
+    // more reliable than window.open — Gemini in particular drops the
+    // ?q= prefill on programmatic opens but honours it on link clicks.
     navigator.clipboard.writeText(prompt).catch(() => {});
-    window.open(href, "_blank");
     setCopied(true);
     setTimeout(() => setCopied(false), 1800);
   };
   return (
-    <button
-      type="button"
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener"
       onClick={onClick}
       className="mono-caps inline-flex items-center gap-1.5 text-[11px] px-4 py-2 border transition-colors hover:bg-[var(--panel)]"
       style={{ borderColor: "var(--line)", color: "var(--text)" }}
     >
       {brand} {copied ? <Check className="h-3 w-3" /> : <ExternalLink className="h-3 w-3" />}
-    </button>
+    </a>
   );
 }

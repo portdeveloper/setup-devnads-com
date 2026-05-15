@@ -27,20 +27,17 @@ export type Dictionary = {
   meta: { title: string; description: string };
   header: { wordmark: string; repo: string; githubAria: string };
   hero: {
-    eyebrow: string;
     title: string;
     body: string;
   };
   // `template` uses {os} placeholder, replaced at render time.
-  manualCta: { eyebrow: string; template: string };
+  manualCta: { template: string };
   afterInstall: {
-    eyebrow: string;
     title: string;
     body: string;
     note: string;
   };
   faucet: {
-    eyebrow: string;
     title: string;
     body: string;
     placeholder: string;
@@ -53,7 +50,6 @@ export type Dictionary = {
     fallbackError: string;
   };
   troubleshooting: {
-    eyebrow: string;
     title: string;
     items: {
       wsl: TroubleItem;
@@ -66,7 +62,6 @@ export type Dictionary = {
     };
   };
   stillStuck: {
-    eyebrow: string;
     body: string;
     copyButton: string;
     copiedButton: string;
