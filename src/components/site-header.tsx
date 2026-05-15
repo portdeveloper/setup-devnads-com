@@ -32,7 +32,7 @@ export function SiteHeader({
       <div className="frame flex h-14 items-center justify-between px-6">
         <Link
           href={`/${locale}`}
-          className="font-mono uppercase tracking-[0.18em] text-xs transition-colors hover:text-[var(--dim)]"
+          className="font-mono tracking-tight text-base md:text-lg transition-colors hover:text-[var(--dim)]"
           style={{ color: "var(--text)" }}
         >
           {dict.header.wordmark}

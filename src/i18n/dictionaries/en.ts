@@ -11,7 +11,7 @@ export const en: Dictionary = {
       "One-command setup for Scaffold-ETH 2 (Foundry) workshops, pre-wired for Monad Testnet. Windows, macOS, and Linux.",
   },
   header: {
-    wordmark: "devnads / setup",
+    wordmark: "setup.devnads.com",
     repo: "Repo",
     githubAria: "GitHub",
   },

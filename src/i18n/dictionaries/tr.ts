@@ -11,7 +11,7 @@ export const tr: Dictionary = {
       "Monad Testnet'e önceden bağlı Scaffold-ETH 2 (Foundry) atölyeleri için tek komutluk kurulum. Windows, macOS ve Linux.",
   },
   header: {
-    wordmark: "devnads / setup",
+    wordmark: "setup.devnads.com",
     repo: "Repo",
     githubAria: "GitHub",
   },
