@@ -176,7 +176,7 @@ export const en: Dictionary = {
         num: "03",
         title: "Configure git + GitHub",
         body:
-          "create-eth requires a configured Git identity. GitHub CLI handles credentials for cloning + pushing.",
+          "It's always good to have git.",
         code:
           'git config --global user.name  "Your Name"\ngit config --global user.email "you@example.com"\ngh auth login',
         screenshots: [

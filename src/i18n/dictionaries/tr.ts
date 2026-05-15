@@ -175,7 +175,7 @@ export const tr: Dictionary = {
         num: "03",
         title: "git + GitHub'ı ayarla",
         body:
-          "create-eth, yapılandırılmış bir Git kimliği ister. GitHub CLI clone + push için kimlik bilgilerini halleder.",
+          "git her zaman iyidir.",
         code:
           'git config --global user.name  "Adın"\ngit config --global user.email "sen@ornek.com"\ngh auth login',
         screenshots: [

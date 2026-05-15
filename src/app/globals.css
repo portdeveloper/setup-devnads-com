@@ -20,12 +20,12 @@
   --destructive: #ef4444;
   --info: #0284c7;
 
-  /* Code Block. Hardcoded by design (one documented exception). */
-  --code-bg: #0d0d14;
-  --code-bg-header: #131318;
-  --code-border: #1e1e2a;
-  --code-text: #c4c4d4;
-  --code-meta: #5c5c7a;
+  /* Code Block tokens. Theme-aware: light in light, dark in dark. */
+  --code-bg: #f4f4f7;
+  --code-bg-header: #eaeaee;
+  --code-border: #dcdce2;
+  --code-text: #1f1f24;
+  --code-meta: #82828c;
 
   /* Squarish brutalist corners */
   --radius: 0rem;
@@ -46,6 +46,12 @@
   --ok: #7df9b0;
   --warn: #ffb547;
   --info: #5cdaff;
+
+  --code-bg: #0d0d14;
+  --code-bg-header: #131318;
+  --code-border: #1e1e2a;
+  --code-text: #c4c4d4;
+  --code-meta: #5c5c7a;
 }
 
 @theme inline {
