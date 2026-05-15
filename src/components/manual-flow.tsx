@@ -93,11 +93,12 @@ function ManualFlowInner({
                   {renderInline(step.body)}
                 </p>
               )}
-              {step.code && (
-                <CodeBlock language={step.lang} {...cb}>
-                  {step.code}
-                </CodeBlock>
-              )}
+              {step.code &&
+                (Array.isArray(step.code) ? step.code : [step.code]).map((c, j) => (
+                  <CodeBlock key={j} language={step.lang} {...cb}>
+                    {c}
+                  </CodeBlock>
+                ))}
               {step.screenshots?.length ? (
                 <div className="flex flex-col gap-3">
                   {step.screenshots.map((sc, j) => (

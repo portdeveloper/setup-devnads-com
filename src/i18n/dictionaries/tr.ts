@@ -173,9 +173,12 @@ export const tr: Dictionary = {
         num: "03",
         title: "Çalıştır",
         body:
-          "Alt kenardan tekrar yukarı sürükleyerek terminal aç, sonra split terminal ikonuna tıkla (veya Ctrl+Shift+5'e bas) ve iki kez böl, böylece üç tane yan yana terminal olsun. Her birinde bir komut çalıştır:",
-        code:
-          "yarn chain      # terminal 1 (yerel Anvil)\nyarn deploy     # terminal 2\nyarn start      # terminal 3 (http://localhost:3000)",
+          "Alt kenardan tekrar yukarı sürükleyerek terminal aç, sonra split terminal ikonuna tıkla (veya Ctrl+Shift+5'e bas) ve iki kez böl, böylece üç tane yan yana terminal olsun. Her birinde bir komut çalıştır, sonra http://localhost:3000'i aç.",
+        code: [
+          "yarn chain",
+          "yarn deploy",
+          "yarn start",
+        ],
         screenshots: [
           {
             src: "/screenshots/win-05-three-terminals.png",
@@ -219,9 +222,13 @@ export const tr: Dictionary = {
       {
         num: "05",
         title: "Çalıştır",
-        body: "./my-monad-dapp içinden üç terminal:",
-        code:
-          "yarn chain      # terminal 1 (yerel Anvil)\nyarn deploy     # terminal 2\nyarn start      # terminal 3 (http://localhost:3000)",
+        body:
+          "./my-monad-dapp içinden üç terminal aç (split pane veya yeni sekme) ve her birinde bir komut çalıştır, sonra http://localhost:3000'i aç.",
+        code: [
+          "yarn chain",
+          "yarn deploy",
+          "yarn start",
+        ],
       },
     ],
     linux: [],

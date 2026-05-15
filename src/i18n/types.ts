@@ -15,7 +15,9 @@ export type StepCopy = {
   num: string;
   title: string;
   body?: string;
-  code?: string;
+  // A single block renders as one CodeBlock; an array renders one block per
+  // entry so multiple commands can be presented as separate copyable chunks.
+  code?: string | string[];
   lang?: string;
   note?: string;
   screenshots?: { src: string; alt: string }[];

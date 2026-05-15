@@ -174,9 +174,12 @@ export const en: Dictionary = {
         num: "03",
         title: "Run it",
         body:
-          "Pull up from the bottom edge again to open a terminal, then click the split terminal icon (or press Ctrl+Shift+5) twice to get three side by side. Run one command in each:",
-        code:
-          "yarn chain      # terminal 1 (local Anvil)\nyarn deploy     # terminal 2\nyarn start      # terminal 3 (http://localhost:3000)",
+          "Pull up from the bottom edge again to open a terminal, then click the split terminal icon (or press Ctrl+Shift+5) twice to get three side by side. Run one command in each, then open http://localhost:3000.",
+        code: [
+          "yarn chain",
+          "yarn deploy",
+          "yarn start",
+        ],
         screenshots: [
           {
             src: "/screenshots/win-05-three-terminals.png",
@@ -220,9 +223,13 @@ export const en: Dictionary = {
       {
         num: "05",
         title: "Run it",
-        body: "Three terminals from inside ./my-monad-dapp:",
-        code:
-          "yarn chain      # terminal 1 (local Anvil)\nyarn deploy     # terminal 2\nyarn start      # terminal 3 (http://localhost:3000)",
+        body:
+          "From inside ./my-monad-dapp, open three terminals (split panes or new tabs) and run one command in each, then open http://localhost:3000.",
+        code: [
+          "yarn chain",
+          "yarn deploy",
+          "yarn start",
+        ],
       },
     ],
     // Linux uses the same step list as Mac for the manual flow.
