@@ -69,6 +69,11 @@ export const tr: Dictionary = {
         body:
           "create-eth, scaffold etmeden önce Git kimliği ister. `git config --global user.name \"Adın\"` ve `git config --global user.email \"sen@ornek.com\"` komutlarını çalıştırıp tekrar dene.",
       },
+      corepackEACCES: {
+        title: "macOS / Linux'ta corepack enable EACCES hatası veriyor",
+        body:
+          "Node'un sistem genelinde kurulu (Homebrew, apt veya resmi .pkg), bu yüzden corepack `/usr/local/bin`'e root olmadan symlink yazamıyor. Ya yukarıdaki nvm parçacığıyla Node'u kur (önerilen — her şey home dizininde kalır, sudo gerekmez), ya da tek seferlik `sudo corepack enable` çalıştır.",
+      },
       localhost: {
         title: "localhost:3000 Windows tarayıcısında açılmıyor",
         body:

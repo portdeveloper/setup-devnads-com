@@ -67,6 +67,7 @@ export type Dictionary = {
       forge: TroubleItem;
       nodeGyp: TroubleItem;
       gitConfig: TroubleItem;
+      corepackEACCES: TroubleItem;
       localhost: TroubleItem;
       slow: TroubleItem;
       mon: TroubleItem;

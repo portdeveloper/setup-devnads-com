@@ -70,6 +70,11 @@ export const en: Dictionary = {
         body:
           "create-eth requires a Git identity before it'll scaffold. Run `git config --global user.name \"Your Name\"` and `git config --global user.email \"you@example.com\"` and try again.",
       },
+      corepackEACCES: {
+        title: "corepack enable fails with EACCES on macOS / Linux",
+        body:
+          "Your Node was installed system-wide (Homebrew, apt, or the official .pkg), so corepack can't symlink into `/usr/local/bin` without root. Either install Node via nvm using the snippet above (recommended — keeps everything in your home dir, no sudo), or run `sudo corepack enable` once.",
+      },
       localhost: {
         title: "localhost:3000 won't load in the Windows browser",
         body:
