@@ -83,7 +83,7 @@ export const tr: Dictionary = {
   },
   stillStuck: {
     body:
-      "Bu sayfanın URL'sini yapay zeka kodlama ajanına (Claude, Cursor, ChatGPT) yapıştırıp sor. Modelin elinde her komut ve sorun giderme notu düz markup olarak var. Ya da [Telegram'dan @portdev'e](https://t.me/portdev) DM at.",
+      "Bu sayfanın URL'sini herhangi bir yapay zeka kodlama ajanına (Claude, ChatGPT, Gemini, Cursor) yapıştırıp sor. Modelin elinde her komut ve sorun giderme notu düz markup olarak var. Ya da [Telegram'dan @portdev'e](https://t.me/portdev) DM at.",
     copyButton: "Sayfa URL'sini kopyala",
     copiedButton: "Kopyalandı",
     dmButton: "@portdev'e DM at",

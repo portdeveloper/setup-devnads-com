@@ -266,9 +266,8 @@ function AskAiButton({
   const [copied, setCopied] = useState(false);
   const onClick = () => {
     // Side-effect only: copy the prompt as a fallback. The anchor's
-    // default click handles navigation. A real user-clicked link is
-    // more reliable than window.open — Gemini in particular drops the
-    // ?q= prefill on programmatic opens but honours it on link clicks.
+    // default click handles navigation, which is more reliable than
+    // window.open for cross-site AI prefill.
     navigator.clipboard.writeText(prompt).catch(() => {});
     setCopied(true);
     setTimeout(() => setCopied(false), 1800);

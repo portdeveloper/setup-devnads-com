@@ -84,7 +84,7 @@ export const en: Dictionary = {
   },
   stillStuck: {
     body:
-      "Paste this page's URL into your AI coding agent (Claude, Cursor, ChatGPT) and ask. The model has every command and troubleshooting note in plain markup. Or DM [@portdev on Telegram](https://t.me/portdev).",
+      "Paste this page's URL into any AI coding agent (Claude, ChatGPT, Gemini, Cursor) and ask. The model has every command and troubleshooting note in plain markup. Or DM [@portdev on Telegram](https://t.me/portdev).",
     copyButton: "Copy page URL",
     copiedButton: "Copied",
     dmButton: "DM @portdev",
