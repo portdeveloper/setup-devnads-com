@@ -205,7 +205,7 @@ export const tr: Dictionary = {
           {
             code: "yarn deploy:monad",
             caption:
-              "Deployer keystore'unu kullanarak Monad Testnet'e deploy eder. Şifre sorulduğunda `monad` gir.",
+              "Deployer keystore'unu kullanarak Monad Testnet'e deploy eder. Şifre sorulmuyor — setup script'i senin için yazdı.",
           },
         ],
       },
@@ -267,7 +267,7 @@ export const tr: Dictionary = {
           {
             code: "yarn deploy:monad",
             caption:
-              "Deployer keystore'unu kullanarak Monad Testnet'e deploy eder. Şifre sorulduğunda `monad` gir.",
+              "Deployer keystore'unu kullanarak Monad Testnet'e deploy eder. Şifre sorulmuyor — setup script'i senin için yazdı.",
           },
         ],
       },

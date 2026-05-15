@@ -206,7 +206,7 @@ export const en: Dictionary = {
           {
             code: "yarn deploy:monad",
             caption:
-              "Deploys to Monad Testnet using the deployer keystore. When prompted for the password, enter `monad`.",
+              "Deploys to Monad Testnet using the deployer keystore. No password prompt — the setup wrote one for you.",
           },
         ],
       },
@@ -268,7 +268,7 @@ export const en: Dictionary = {
           {
             code: "yarn deploy:monad",
             caption:
-              "Deploys to Monad Testnet using the deployer keystore. When prompted for the password, enter `monad`.",
+              "Deploys to Monad Testnet using the deployer keystore. No password prompt — the setup wrote one for you.",
           },
         ],
       },
