@@ -8,6 +8,7 @@ import { CodeBlock } from "@/components/code-block";
 import { OsTabs, type Os } from "@/components/os-tabs";
 import { SectionFrame } from "@/components/section-frame";
 import type { Locale } from "@/i18n/config";
+import { renderInline } from "@/i18n/render-inline";
 import type { Dictionary } from "@/i18n/types";
 
 const STEP_NUM_COLORS = [
@@ -89,7 +90,7 @@ function ManualFlowInner({
                   className="text-base md:text-lg leading-relaxed max-w-[640px]"
                   style={{ color: "var(--text)" }}
                 >
-                  {step.body}
+                  {renderInline(step.body)}
                 </p>
               )}
               {step.screenshots?.length ? (
@@ -117,7 +118,7 @@ function ManualFlowInner({
                   className="text-sm leading-relaxed border-l-2 pl-3"
                   style={{ color: "var(--dim)", borderColor: "var(--warn)" }}
                 >
-                  {step.note}
+                  {renderInline(step.note)}
                 </p>
               )}
             </div>

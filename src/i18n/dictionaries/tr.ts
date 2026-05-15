@@ -144,7 +144,7 @@ export const tr: Dictionary = {
         code: `irm ${RAW_BASE}/windows-bootstrap.ps1 | iex`,
         lang: "powershell",
         note:
-          "VSCode'un kurulu olduğundan emin ol. Bir sonraki adımda ihtiyacın olacak. Kurulu değilse buradan kur: https://code.visualstudio.com/download.",
+          "VSCode'un kurulu olduğundan emin ol. Bir sonraki adımda ihtiyacın olacak. Kurulu değilse buradan kur: [code.visualstudio.com](https://code.visualstudio.com/download).",
         screenshots: [
           {
             src: "/screenshots/win-01-powershell-admin.png",
@@ -156,7 +156,7 @@ export const tr: Dictionary = {
         num: "02",
         title: "Geliştirme toolchain'ini kur",
         body:
-          "VSCode'da WSL eklentisini buradan kur: https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl. Sonra VSCode'u başlat, F1'e bas ve \"WSL: Connect to WSL\" seç (veya belirli bir dağıtım için \"WSL: Connect to WSL using Distro\"), ardından File menüsünden klasörünü aç. Açılan pencerede alt kenardan yukarı sürükleyerek terminal aç, sonra Node LTS, Yarn, Foundry ve GitHub CLI'yi tek seferde kur.",
+          "VSCode'da [WSL eklentisini](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl) kur. Sonra VSCode'u başlat, F1'e bas ve \"WSL: Connect to WSL\" seç (veya belirli bir dağıtım için \"WSL: Connect to WSL using Distro\"), ardından File menüsünden klasörünü aç. Açılan pencerede alt kenardan yukarı sürükleyerek terminal aç, sonra Node LTS, Yarn, Foundry ve GitHub CLI'yi tek seferde kur.",
         code: `bash -c "$(curl -fsSL ${RAW_BASE}/wsl-bootstrap.sh)"`,
         note:
           "Bittikten sonra VSCode terminalini kapatıp yeniden aç, böylece PATH yeni araçları görür.",

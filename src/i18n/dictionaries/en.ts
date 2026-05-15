@@ -145,7 +145,7 @@ export const en: Dictionary = {
         code: `irm ${RAW_BASE}/windows-bootstrap.ps1 | iex`,
         lang: "powershell",
         note:
-          "Make sure VSCode is installed. You'll need it in the next step. If not, install it from https://code.visualstudio.com/download.",
+          "Make sure VSCode is installed. You'll need it in the next step. If not, install it from [code.visualstudio.com](https://code.visualstudio.com/download).",
         screenshots: [
           {
             src: "/screenshots/win-01-powershell-admin.png",
@@ -157,7 +157,7 @@ export const en: Dictionary = {
         num: "02",
         title: "Install the dev toolchain",
         body:
-          "In VSCode, install the WSL extension from https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl. Then start VSCode, press F1 and select \"WSL: Connect to WSL\" (or \"WSL: Connect to WSL using Distro\" for a specific distro), and use the File menu to open your folder. In the new window, drag up from the bottom edge to open a terminal, then install Node LTS, Yarn, Foundry, and the GitHub CLI in one go.",
+          "In VSCode, install the [WSL extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl). Then start VSCode, press F1 and select \"WSL: Connect to WSL\" (or \"WSL: Connect to WSL using Distro\" for a specific distro), and use the File menu to open your folder. In the new window, drag up from the bottom edge to open a terminal, then install Node LTS, Yarn, Foundry, and the GitHub CLI in one go.",
         screenshots: [
           {
             src: "/screenshots/win-02a-command-palette.png",

@@ -119,7 +119,7 @@ export function HomeFlow({
                   className="text-base md:text-lg leading-relaxed max-w-[640px]"
                   style={{ color: "var(--text)" }}
                 >
-                  {step.body}
+                  {renderInline(step.body)}
                 </p>
               )}
               {step.screenshots?.length ? (
@@ -147,7 +147,7 @@ export function HomeFlow({
                   className="text-sm leading-relaxed border-l-2 pl-3"
                   style={{ color: "var(--dim)", borderColor: "var(--warn)" }}
                 >
-                  {step.note}
+                  {renderInline(step.note)}
                 </p>
               )}
             </div>
