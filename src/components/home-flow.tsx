@@ -157,14 +157,16 @@ export function HomeFlow({
                   ))}
                 </div>
               ) : null}
-              {step.note && (
-                <p
-                  className="text-sm leading-relaxed border-l-2 pl-3"
-                  style={{ color: "var(--dim)", borderColor: "var(--warn)" }}
-                >
-                  {renderInline(step.note)}
-                </p>
-              )}
+              {step.note &&
+                (Array.isArray(step.note) ? step.note : [step.note]).map((n, j) => (
+                  <p
+                    key={j}
+                    className="text-sm leading-relaxed border-l-2 pl-3"
+                    style={{ color: "var(--dim)", borderColor: "var(--warn)" }}
+                  >
+                    {renderInline(n)}
+                  </p>
+                ))}
             </div>
           </div>
         </SectionFrame>

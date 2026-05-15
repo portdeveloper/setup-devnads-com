@@ -149,8 +149,11 @@ export const en: Dictionary = {
           "Open PowerShell as Administrator and run the bootstrap. It installs Windows Subsystem for Linux (with Ubuntu) and prompts you to reboot.",
         code: `irm ${RAW_BASE}/windows-bootstrap.ps1 | iex`,
         lang: "powershell",
-        note:
-          "Make sure VSCode is installed. You'll need it in the next step. If not, install it from [code.visualstudio.com](https://code.visualstudio.com/download). If the script warns that hardware virtualization is disabled, you need to enable `VT-x` (Intel) or `AMD-V` / `SVM` (AMD) in your BIOS/UEFI — follow [Microsoft's guide](https://support.microsoft.com/en-us/windows/enable-virtualization-on-windows-11-pcs-c5578302-6e43-4b4b-a449-8ced115f58e1) or the [WSL troubleshooting docs](https://learn.microsoft.com/windows/wsl/troubleshooting), reboot, and re-run the script.",
+        note: [
+          "Reboot your computer when the script finishes. WSL only becomes usable after a full restart, so step 2 won't work until you've rebooted.",
+          "Make sure VSCode is installed. You'll need it in the next step. If not, install it from [code.visualstudio.com](https://code.visualstudio.com/download).",
+          "If the script warns that hardware virtualization is disabled, you need to enable `VT-x` (Intel) or `AMD-V` / `SVM` (AMD) in your BIOS/UEFI — follow [Microsoft's guide](https://support.microsoft.com/en-us/windows/enable-virtualization-on-windows-11-pcs-c5578302-6e43-4b4b-a449-8ced115f58e1) or the [WSL troubleshooting docs](https://learn.microsoft.com/windows/wsl/troubleshooting), reboot, and re-run the script.",
+        ],
         screenshots: [
           {
             src: "/screenshots/win-01-powershell-admin.png",

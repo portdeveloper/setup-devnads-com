@@ -148,8 +148,11 @@ export const tr: Dictionary = {
           "PowerShell'i Yönetici olarak aç ve bootstrap'i çalıştır. Windows Subsystem for Linux'u (Ubuntu ile birlikte) kurar ve yeniden başlatma ister.",
         code: `irm ${RAW_BASE}/windows-bootstrap.ps1 | iex`,
         lang: "powershell",
-        note:
-          "VSCode'un kurulu olduğundan emin ol. Bir sonraki adımda ihtiyacın olacak. Kurulu değilse buradan kur: [code.visualstudio.com](https://code.visualstudio.com/download). Script donanım sanallaştırmasının kapalı olduğunu söylerse BIOS/UEFI'den `VT-x` (Intel) veya `AMD-V` / `SVM` (AMD) seçeneğini etkinleştirmen gerek. [Microsoft'un rehberini](https://support.microsoft.com/en-us/windows/enable-virtualization-on-windows-11-pcs-c5578302-6e43-4b4b-a449-8ced115f58e1) veya [WSL troubleshooting dokümanını](https://learn.microsoft.com/windows/wsl/troubleshooting) izle, yeniden başlat ve script'i tekrar çalıştır.",
+        note: [
+          "Script bitince bilgisayarını yeniden başlat. WSL ancak tam bir yeniden başlatmadan sonra kullanılabilir hale gelir, yani yeniden başlatmadan 2. adım çalışmaz.",
+          "VSCode'un kurulu olduğundan emin ol. Bir sonraki adımda ihtiyacın olacak. Kurulu değilse buradan kur: [code.visualstudio.com](https://code.visualstudio.com/download).",
+          "Script donanım sanallaştırmasının kapalı olduğunu söylerse BIOS/UEFI'den `VT-x` (Intel) veya `AMD-V` / `SVM` (AMD) seçeneğini etkinleştirmen gerek. [Microsoft'un rehberini](https://support.microsoft.com/en-us/windows/enable-virtualization-on-windows-11-pcs-c5578302-6e43-4b4b-a449-8ced115f58e1) veya [WSL troubleshooting dokümanını](https://learn.microsoft.com/windows/wsl/troubleshooting) izle, yeniden başlat ve script'i tekrar çalıştır.",
+        ],
         screenshots: [
           {
             src: "/screenshots/win-01-powershell-admin.png",

@@ -22,7 +22,9 @@ export type StepCopy = {
   // explanation under the block.
   code?: string | (string | CodeEntry)[];
   lang?: string;
-  note?: string;
+  // Single string renders as one warning paragraph; an array renders each
+  // entry as its own paragraph so multiple distinct warnings stay scannable.
+  note?: string | string[];
   screenshots?: { src: string; alt: string }[];
 };
 
