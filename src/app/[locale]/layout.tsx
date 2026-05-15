@@ -39,6 +39,11 @@ export async function generateMetadata({
       locale: locale === "tr" ? "tr_TR" : "en_US",
       type: "website",
     },
+    twitter: {
+      card: "summary_large_image",
+      title: dict.meta.title,
+      description: dict.meta.description,
+    },
   };
 }
 
