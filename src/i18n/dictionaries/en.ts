@@ -29,6 +29,11 @@ export const en: Dictionary = {
     note:
       "To deploy to Monad Testnet later: gh auth login, yarn deploy --network monadTestnet.",
   },
+  wallet: {
+    title: "Do you have a wallet?",
+    body:
+      "You'll need one to receive testnet MON below and to sign transactions on your dapp. Grab [MetaMask](https://metamask.io) if you don't already have one.",
+  },
   faucet: {
     title: "Grab some MON to deploy with.",
     body:

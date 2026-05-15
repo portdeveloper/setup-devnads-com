@@ -29,6 +29,11 @@ export const tr: Dictionary = {
     note:
       "Daha sonra Monad Testnet'e deploy etmek için: gh auth login, yarn deploy --network monadTestnet.",
   },
+  wallet: {
+    title: "Cüzdanın var mı?",
+    body:
+      "Aşağıdaki testnet MON'u almak ve dapp'inde işlem imzalamak için bir cüzdana ihtiyacın olacak. Yoksa [MetaMask](https://metamask.io)'i kap.",
+  },
   faucet: {
     title: "Deploy için biraz MON kap.",
     body:

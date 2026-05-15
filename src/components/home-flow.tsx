@@ -170,6 +170,16 @@ export function HomeFlow({
         </SectionFrame>
       ))}
 
+      {/* WALLET */}
+      <SectionFrame className="px-6 py-14">
+        <h2 className="text-2xl md:text-3xl tracking-tight mb-5" style={{ color: "var(--text)" }}>
+          {dict.wallet.title}
+        </h2>
+        <p className="text-sm leading-relaxed max-w-[640px]" style={{ color: "var(--dim)" }}>
+          {renderInline(dict.wallet.body)}
+        </p>
+      </SectionFrame>
+
       {/* FAUCET */}
       <SectionFrame className="px-6 py-14">
         <h2 className="text-2xl md:text-3xl tracking-tight mb-5" style={{ color: "var(--text)" }}>

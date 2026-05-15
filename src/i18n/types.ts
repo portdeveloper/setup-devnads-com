@@ -42,6 +42,10 @@ export type Dictionary = {
     body: string;
     note: string;
   };
+  wallet: {
+    title: string;
+    body: string;
+  };
   faucet: {
     title: string;
     body: string;
