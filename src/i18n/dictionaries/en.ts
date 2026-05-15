@@ -174,20 +174,6 @@ export const en: Dictionary = {
       },
       {
         num: "03",
-        title: "Configure git + GitHub",
-        body:
-          "Git tracks every change you make so you can undo mistakes, branch off new ideas, and share your work. GitHub is where that work lives online, gets reviewed, and turns into the project history people actually trust. Setting your name and signing in once now means every commit and push later just works.",
-        code:
-          'git config --global user.name  "Your Name"\ngit config --global user.email "you@example.com"\ngh auth login',
-        screenshots: [
-          {
-            src: "/screenshots/win-03-git-config.png",
-            alt: "Ubuntu terminal running git config and the gh auth login prompt",
-          },
-        ],
-      },
-      {
-        num: "04",
         title: "Scaffold your dApp",
         body:
           "One command creates the project with Monad Testnet (chain 10143) pre-wired in foundry.toml and scaffold.config.ts.",
@@ -200,7 +186,7 @@ export const en: Dictionary = {
         ],
       },
       {
-        num: "05",
+        num: "04",
         title: "Run it",
         body: "Three terminals from inside ~/my-monad-dapp:",
         code:

@@ -173,20 +173,6 @@ export const tr: Dictionary = {
       },
       {
         num: "03",
-        title: "git + GitHub'ı ayarla",
-        body:
-          "Git yaptığın her değişikliği takip eder. Hataları geri alabilir, yeni fikirler için dal açabilir ve işini başkalarıyla paylaşabilirsin. GitHub ise işinin online yaşadığı, incelendiği ve insanların güvendiği proje geçmişine dönüştüğü yer. Adını ayarlayıp şimdi bir kez giriş yapmak, sonraki tüm commit ve push'ların sorunsuz çalışması demek.",
-        code:
-          'git config --global user.name  "Adın"\ngit config --global user.email "sen@ornek.com"\ngh auth login',
-        screenshots: [
-          {
-            src: "/screenshots/win-03-git-config.png",
-            alt: "Ubuntu terminalinde git config ve gh auth login istemi",
-          },
-        ],
-      },
-      {
-        num: "04",
         title: "dApp'ini scaffold et",
         body:
           "Tek komut, projeyi Monad Testnet (chain 10143) önceden foundry.toml ve scaffold.config.ts'e bağlı şekilde oluşturur.",
@@ -199,7 +185,7 @@ export const tr: Dictionary = {
         ],
       },
       {
-        num: "05",
+        num: "04",
         title: "Çalıştır",
         body: "~/my-monad-dapp içinden üç terminal:",
         code:
