@@ -171,19 +171,6 @@ export const tr: Dictionary = {
       },
       {
         num: "03",
-        title: "dApp'ini scaffold et",
-        body:
-          "Tek komut, projeyi Monad Testnet (chain 10143) önceden foundry.toml ve scaffold.config.ts'e bağlı şekilde oluşturur.",
-        code: `npx create-eth@latest my-monad-dapp -e ${EXTENSION}`,
-        screenshots: [
-          {
-            src: "/screenshots/win-04-create-eth.png",
-            alt: "create-eth scaffolding yeşil tiklerle tamamlandı",
-          },
-        ],
-      },
-      {
-        num: "04",
         title: "Çalıştır",
         body: "~/my-monad-dapp içinden üç terminal:",
         code:
