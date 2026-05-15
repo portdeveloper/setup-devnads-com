@@ -32,7 +32,7 @@ export const en: Dictionary = {
   wallet: {
     title: "Do you have a wallet?",
     body:
-      "You'll need one to receive testnet MON below and to sign transactions on your dapp. Grab [MetaMask](https://metamask.io) if you don't already have one.",
+      "You'll want one to interact with your dapp in the browser and sign transactions from the UI. Grab [MetaMask](https://metamask.io) if you don't already have one. (The deploy keystore is separate and was set up for you in step 4.)",
   },
   faucet: {
     title: "Grab some MON to deploy with.",
@@ -192,6 +192,24 @@ export const en: Dictionary = {
           },
         ],
       },
+      {
+        num: "04",
+        title: "Deploy to Monad Testnet",
+        body:
+          "Deploying to a public chain needs its own funded wallet (separate from MetaMask). The setup script creates one for you, funds it from the faucet, and the deploy script uses it. Run these in a fresh terminal pane.",
+        code: [
+          {
+            code: "yarn monad:setup",
+            caption:
+              "One-time. Creates a `monad-deployer` keystore (password: `monad`) and drips MON to it. Safe to re-run.",
+          },
+          {
+            code: "yarn deploy:monad",
+            caption:
+              "Deploys to Monad Testnet using the deployer keystore. When prompted for the password, enter `monad`.",
+          },
+        ],
+      },
     ],
     mac: [
       {
@@ -234,6 +252,24 @@ export const en: Dictionary = {
           { code: "yarn chain", caption: "Starts a local Anvil chain so your dapp has somewhere to talk to." },
           { code: "yarn deploy", caption: "Compiles the contracts and pushes them onto the local chain." },
           { code: "yarn start", caption: "Boots the Next.js frontend at http://localhost:3000." },
+        ],
+      },
+      {
+        num: "06",
+        title: "Deploy to Monad Testnet",
+        body:
+          "Deploying to a public chain needs its own funded wallet (separate from MetaMask). The setup script creates one for you, funds it from the faucet, and the deploy script uses it.",
+        code: [
+          {
+            code: "yarn monad:setup",
+            caption:
+              "One-time. Creates a `monad-deployer` keystore (password: `monad`) and drips MON to it. Safe to re-run.",
+          },
+          {
+            code: "yarn deploy:monad",
+            caption:
+              "Deploys to Monad Testnet using the deployer keystore. When prompted for the password, enter `monad`.",
+          },
         ],
       },
     ],

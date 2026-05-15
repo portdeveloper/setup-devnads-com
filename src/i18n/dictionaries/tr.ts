@@ -32,7 +32,7 @@ export const tr: Dictionary = {
   wallet: {
     title: "Cüzdanın var mı?",
     body:
-      "Aşağıdaki testnet MON'u almak ve dapp'inde işlem imzalamak için bir cüzdana ihtiyacın olacak. Yoksa [MetaMask](https://metamask.io)'i kap.",
+      "Dapp'inle tarayıcıda etkileşmek ve UI'dan işlem imzalamak için bir cüzdan isteyeceksin. Yoksa [MetaMask](https://metamask.io)'i kap. (Deploy keystore'u ayrıdır ve 4. adımda senin için kuruldu.)",
   },
   faucet: {
     title: "Deploy için biraz MON kap.",
@@ -191,6 +191,24 @@ export const tr: Dictionary = {
           },
         ],
       },
+      {
+        num: "04",
+        title: "Monad Testnet'e deploy et",
+        body:
+          "Public bir zincire deploy etmek için ayrı bir funded cüzdana ihtiyaç var (MetaMask'tan ayrı). Setup script'i bu cüzdanı senin için oluşturur, faucet'tan fonlar ve deploy script'i onu kullanır. Yeni bir terminal panosunda çalıştır.",
+        code: [
+          {
+            code: "yarn monad:setup",
+            caption:
+              "Tek seferlik. Bir `monad-deployer` keystore'u oluşturur (şifre: `monad`) ve oraya MON damlatır. Tekrar çalıştırmak güvenli.",
+          },
+          {
+            code: "yarn deploy:monad",
+            caption:
+              "Deployer keystore'unu kullanarak Monad Testnet'e deploy eder. Şifre sorulduğunda `monad` gir.",
+          },
+        ],
+      },
     ],
     mac: [
       {
@@ -233,6 +251,24 @@ export const tr: Dictionary = {
           { code: "yarn chain", caption: "Yerel bir Anvil zinciri başlatır, böylece dapp'inin konuşacağı bir blockchain olur." },
           { code: "yarn deploy", caption: "Kontratları derler ve yerel zincire yükler." },
           { code: "yarn start", caption: "Next.js frontend'ini http://localhost:3000'de açar." },
+        ],
+      },
+      {
+        num: "06",
+        title: "Monad Testnet'e deploy et",
+        body:
+          "Public bir zincire deploy etmek için ayrı bir funded cüzdana ihtiyaç var (MetaMask'tan ayrı). Setup script'i bu cüzdanı senin için oluşturur, faucet'tan fonlar ve deploy script'i onu kullanır.",
+        code: [
+          {
+            code: "yarn monad:setup",
+            caption:
+              "Tek seferlik. Bir `monad-deployer` keystore'u oluşturur (şifre: `monad`) ve oraya MON damlatır. Tekrar çalıştırmak güvenli.",
+          },
+          {
+            code: "yarn deploy:monad",
+            caption:
+              "Deployer keystore'unu kullanarak Monad Testnet'e deploy eder. Şifre sorulduğunda `monad` gir.",
+          },
         ],
       },
     ],
