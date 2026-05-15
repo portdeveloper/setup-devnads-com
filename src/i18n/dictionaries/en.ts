@@ -151,12 +151,28 @@ export const en: Dictionary = {
         lang: "powershell",
         note:
           "After reboot, open Ubuntu from Start. Create a Linux username + password. These are separate from your Windows login.",
+        screenshots: [
+          {
+            src: "/screenshots/win-01-powershell-admin.png",
+            alt: "PowerShell running as Administrator with the bootstrap one-liner",
+          },
+        ],
       },
       {
         num: "02",
         title: "Install the dev toolchain",
         body:
           "In VSCode, run \"WSL: Connect to WSL\" from the Command Palette (Ctrl+Shift+P). In the new window, drag up from the bottom edge to open a terminal, then install Node LTS, Yarn, Foundry, and the GitHub CLI in one go.",
+        screenshots: [
+          {
+            src: "/screenshots/win-02a-command-palette.png",
+            alt: "VSCode Command Palette with 'WSL: Connect to WSL' highlighted",
+          },
+          {
+            src: "/screenshots/win-02b-drag-terminal.png",
+            alt: "Dragging the bottom edge of VSCode up to reveal the integrated terminal",
+          },
+        ],
         code: `bash -c "$(curl -fsSL ${RAW_BASE}/wsl-bootstrap.sh)"`,
         note:
           "Close and reopen the VSCode terminal after this finishes so PATH picks up the new tools.",
@@ -168,6 +184,12 @@ export const en: Dictionary = {
           "create-eth requires a configured Git identity. GitHub CLI handles credentials for cloning + pushing.",
         code:
           'git config --global user.name  "Your Name"\ngit config --global user.email "you@example.com"\ngh auth login',
+        screenshots: [
+          {
+            src: "/screenshots/win-03-git-config.png",
+            alt: "Ubuntu terminal running git config and the gh auth login prompt",
+          },
+        ],
       },
       {
         num: "04",
@@ -175,6 +197,12 @@ export const en: Dictionary = {
         body:
           "One command creates the project with Monad Testnet (chain 10143) pre-wired in foundry.toml and scaffold.config.ts.",
         code: `npx create-eth@latest my-monad-dapp -e ${EXTENSION}`,
+        screenshots: [
+          {
+            src: "/screenshots/win-04-create-eth.png",
+            alt: "create-eth scaffolding finished with green checkmarks",
+          },
+        ],
       },
       {
         num: "05",
@@ -182,6 +210,12 @@ export const en: Dictionary = {
         body: "Three terminals from inside ~/my-monad-dapp:",
         code:
           "yarn chain      # terminal 1 (local Anvil)\nyarn deploy     # terminal 2\nyarn start      # terminal 3 (http://localhost:3000)",
+        screenshots: [
+          {
+            src: "/screenshots/win-05-three-terminals.png",
+            alt: "Three Ubuntu terminals running yarn chain, yarn deploy, and yarn start side by side",
+          },
+        ],
       },
     ],
     mac: [

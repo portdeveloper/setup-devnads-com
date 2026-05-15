@@ -150,6 +150,12 @@ export const tr: Dictionary = {
         lang: "powershell",
         note:
           "Yeniden başlattıktan sonra Başlat'tan Ubuntu'yu aç. Linux kullanıcı adı + şifre oluştur. Bunlar Windows girişinden ayrıdır.",
+        screenshots: [
+          {
+            src: "/screenshots/win-01-powershell-admin.png",
+            alt: "Yönetici olarak çalışan PowerShell, bootstrap tek satırlığı",
+          },
+        ],
       },
       {
         num: "02",
@@ -159,6 +165,16 @@ export const tr: Dictionary = {
         code: `bash -c "$(curl -fsSL ${RAW_BASE}/wsl-bootstrap.sh)"`,
         note:
           "Bittikten sonra VSCode terminalini kapatıp yeniden aç, böylece PATH yeni araçları görür.",
+        screenshots: [
+          {
+            src: "/screenshots/win-02a-command-palette.png",
+            alt: "VSCode Komut Paleti, 'WSL: Connect to WSL' vurgulanmış",
+          },
+          {
+            src: "/screenshots/win-02b-drag-terminal.png",
+            alt: "VSCode'un alt kenarını yukarı sürükleyerek terminali açma",
+          },
+        ],
       },
       {
         num: "03",
@@ -167,6 +183,12 @@ export const tr: Dictionary = {
           "create-eth, yapılandırılmış bir Git kimliği ister. GitHub CLI clone + push için kimlik bilgilerini halleder.",
         code:
           'git config --global user.name  "Adın"\ngit config --global user.email "sen@ornek.com"\ngh auth login',
+        screenshots: [
+          {
+            src: "/screenshots/win-03-git-config.png",
+            alt: "Ubuntu terminalinde git config ve gh auth login istemi",
+          },
+        ],
       },
       {
         num: "04",
@@ -174,6 +196,12 @@ export const tr: Dictionary = {
         body:
           "Tek komut, projeyi Monad Testnet (chain 10143) önceden foundry.toml ve scaffold.config.ts'e bağlı şekilde oluşturur.",
         code: `npx create-eth@latest my-monad-dapp -e ${EXTENSION}`,
+        screenshots: [
+          {
+            src: "/screenshots/win-04-create-eth.png",
+            alt: "create-eth scaffolding yeşil tiklerle tamamlandı",
+          },
+        ],
       },
       {
         num: "05",
@@ -181,6 +209,12 @@ export const tr: Dictionary = {
         body: "~/my-monad-dapp içinden üç terminal:",
         code:
           "yarn chain      # terminal 1 (yerel Anvil)\nyarn deploy     # terminal 2\nyarn start      # terminal 3 (http://localhost:3000)",
+        screenshots: [
+          {
+            src: "/screenshots/win-05-three-terminals.png",
+            alt: "yarn chain, yarn deploy ve yarn start çalışan üç Ubuntu terminali yan yana",
+          },
+        ],
       },
     ],
     mac: [
