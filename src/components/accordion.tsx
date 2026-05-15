@@ -17,7 +17,7 @@ export function AccordionItem({ title, children, defaultOpen = false }: Accordio
         type="button"
         onClick={() => setOpen((o) => !o)}
         aria-expanded={open}
-        className="flex w-full items-center justify-between gap-4 px-6 py-4 text-left transition-colors hover:bg-[var(--panel)]"
+        className="flex w-full items-center justify-between gap-4 px-6 py-4 text-left transition-colors hover:bg-[var(--panel-hi)]"
       >
         <span className="text-sm" style={{ color: "var(--text)" }}>
           {title}

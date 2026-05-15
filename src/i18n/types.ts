@@ -79,6 +79,7 @@ export type Dictionary = {
   codeBlock: { copy: string; copied: string };
   os: Record<Os, string>;
   langSwitch: { aria: string };
+  themeToggle: { aria: string };
   footer: {
     copyright: string;
     workshopSetup: string;

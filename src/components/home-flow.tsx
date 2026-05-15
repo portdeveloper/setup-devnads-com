@@ -70,15 +70,15 @@ export function HomeFlow({
           </div>
           <div className="flex flex-col items-start gap-3 md:items-center">
             <div
-              className="p-3"
-              style={{ background: "var(--text)" }}
+              className="p-3 border"
+              style={{ background: "var(--panel)", borderColor: "var(--line)" }}
               aria-label={PAGE_URL}
             >
               <QRCode
                 value={PAGE_URL}
                 size={360}
-                bgColor="#e7e7ea"
-                fgColor="#0a0a0c"
+                bgColor="#ffffff"
+                fgColor="#16161b"
                 level="M"
               />
             </div>
@@ -206,7 +206,7 @@ export function HomeFlow({
             href="https://t.me/portdev"
             target="_blank"
             rel="noreferrer"
-            className="mono-caps inline-flex items-center gap-1.5 text-[11px] px-4 py-2 border transition-colors hover:bg-[var(--panel)]"
+            className="mono-caps inline-flex items-center gap-1.5 text-[11px] px-4 py-2 border transition-colors hover:bg-[var(--panel-hi)]"
             style={{ borderColor: "var(--line)", color: "var(--text)" }}
           >
             {dict.stillStuck.dmButton}
@@ -238,7 +238,7 @@ function CopyPageUrlButton({
     <button
       type="button"
       onClick={onCopy}
-      className="mono-caps inline-flex items-center gap-1.5 text-[11px] px-4 py-2 border transition-colors hover:bg-[var(--panel)]"
+      className="mono-caps inline-flex items-center gap-1.5 text-[11px] px-4 py-2 border transition-colors hover:bg-[var(--panel-hi)]"
       style={{ borderColor: "var(--line)", color: "var(--text)" }}
     >
       {copied ? (
@@ -278,7 +278,7 @@ function AskAiButton({
       target="_blank"
       rel="noopener"
       onClick={onClick}
-      className="mono-caps inline-flex items-center gap-1.5 text-[11px] px-4 py-2 border transition-colors hover:bg-[var(--panel)]"
+      className="mono-caps inline-flex items-center gap-1.5 text-[11px] px-4 py-2 border transition-colors hover:bg-[var(--panel-hi)]"
       style={{ borderColor: "var(--line)", color: "var(--text)" }}
     >
       {brand} {copied ? <Check className="h-3 w-3" /> : <ExternalLink className="h-3 w-3" />}

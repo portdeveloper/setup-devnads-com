@@ -3,22 +3,22 @@
 :root {
   /* Terminal Direction tokens. Match devnads-blitz-com.
      Page = --bg. Cards = --panel + 1px --line. Nested = --panel-hi. */
-  --bg: #e7e7ea;
-  --panel: #f4f4f6;
-  --panel-hi: #ffffff;
-  --line: #c8c8d0;
-  --line-hi: #b4b4be;
+  --bg: #fafafa;
+  --panel: #ffffff;
+  --panel-hi: #f0f0f3;
+  --line: #e4e4e9;
+  --line-hi: #cfcfd6;
   --text: #16161b;
   --dim: #6a6a75;
-  --very-dim: #8a8a93;
-  --brand: #836ef9;
-  --brand-hi: #a594ff;
-  --brand-pressed: #6e54ff;
+  --very-dim: #9a9aa3;
+  --brand: #6e54ff;
+  --brand-hi: #836ef9;
+  --brand-pressed: #5a3eff;
   --on-brand: #ffffff;
-  --ok: #7df9b0;
-  --warn: #ffb547;
+  --ok: #18a957;
+  --warn: #d97706;
   --destructive: #ef4444;
-  --info: #5cdaff;
+  --info: #0284c7;
 
   /* Code Block. Hardcoded by design (one documented exception). */
   --code-bg: #0d0d14;
@@ -29,6 +29,23 @@
 
   /* Squarish brutalist corners */
   --radius: 0rem;
+}
+
+[data-theme="dark"] {
+  --bg: #0a0a0c;
+  --panel: #111114;
+  --panel-hi: #1a1a22;
+  --line: #23232a;
+  --line-hi: #2e2e36;
+  --text: #e7e7ea;
+  --dim: #8a8a93;
+  --very-dim: #56565d;
+  --brand: #836ef9;
+  --brand-hi: #a594ff;
+  --brand-pressed: #6e54ff;
+  --ok: #7df9b0;
+  --warn: #ffb547;
+  --info: #5cdaff;
 }
 
 @theme inline {

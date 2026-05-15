@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { LangSwitch } from "@/components/lang-switch";
+import { ThemeToggle } from "@/components/theme-toggle";
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/types";
 
@@ -37,6 +38,7 @@ export function SiteHeader({
           {dict.header.wordmark}
         </Link>
         <nav className="flex items-center gap-4 md:gap-5">
+          <ThemeToggle ariaLabel={dict.themeToggle.aria} />
           <LangSwitch current={locale} ariaLabel={dict.langSwitch.aria} />
           <Link
             href="https://github.com/portdeveloper/se2-workshop-windows-setup"

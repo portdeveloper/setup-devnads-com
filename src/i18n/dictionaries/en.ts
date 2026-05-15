@@ -102,6 +102,7 @@ export const en: Dictionary = {
   codeBlock: { copy: "Copy", copied: "Copied" },
   os: { windows: "Windows", mac: "macOS", linux: "Linux" },
   langSwitch: { aria: "Language" },
+  themeToggle: { aria: "Toggle theme" },
   footer: {
     copyright: "© 2026 devnads · For Monad workshops",
     workshopSetup: "Workshop setup",

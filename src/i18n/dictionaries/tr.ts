@@ -101,6 +101,7 @@ export const tr: Dictionary = {
   codeBlock: { copy: "Kopyala", copied: "Kopyalandı" },
   os: { windows: "Windows", mac: "macOS", linux: "Linux" },
   langSwitch: { aria: "Dil" },
+  themeToggle: { aria: "Temayı değiştir" },
   footer: {
     copyright: "© 2026 devnads · Monad atölyeleri için",
     workshopSetup: "Atölye kurulumu",
