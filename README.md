@@ -1,6 +1,6 @@
 # setup.devnads.com
 
-Single-page setup guide for the Monad / Scaffold-ETH 2 workshops. Lives at <https://setup.devnads.com>.
+Single-page setup guide for the Monad / Scaffold-ETH 2 workshops. Lives at <https://setup.devnads.com>. Built by [@portdeveloper](https://portdeveloper.github.io).
 
 Wraps two sibling repos:
 
